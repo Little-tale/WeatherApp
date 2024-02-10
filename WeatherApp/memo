@@ -32,9 +32,16 @@
   -> 날씨 아이콘은 icon : 01n 같이 날아옴
   // https://openweathermap.org/img/wn/{10d}@2x.png
 
-Model
+current Model
 - coord 안에 lon, lat
-- weather 안에
+- weather 안에 main(날씨이름) -> description : 좀더 자세한 날씨 + icon
+- main 안에 temp(화씨온도) + tempMax + tempMin
+- name (도시이름)
+- id (도시 아이디)
+
+ForeCase 같은 경우엔는 전체 개수랑 cod?
+아무튼 위의 모델을 여러개 같고 있는 형태임
+
 
 2. 통신 테스트를 마치고
 3. 위치 권한 가져오는거 하고
