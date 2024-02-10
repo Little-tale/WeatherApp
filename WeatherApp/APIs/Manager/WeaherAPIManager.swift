@@ -16,20 +16,30 @@ class URLSessionManager {
     private init() {}
     static let shared = URLSessionManager()
     
-    @discardableResult
-    func fetch<T:Decodable>(type: T.Type, api: UrlSession, compltionHandler: @escaping (T) -> Void ) throws -> Error  {
+    func fetch<T:Decodable>(type: T.Type, api: UrlSession, completionHandler: @escaping (apiModel<T>) -> Void ){
         let urlRequestCase = makeURLComponents(api: api)
+        
         switch urlRequestCase{
         case .success(let urlRequest):
             URLSession.shared.dataTask(with:urlRequest) { data, response, error in
-                <#code#>
-            }
+                DispatchQueue.main.async {
+                    let result = self.DecodingTester(type: T.self, data: data, response: response, error: error)
+                    switch result {
+                    case .success(let success):
+                        completionHandler(.success(success))
+                    case .failure(let failure):
+                        completionHandler(.failure(failure))
+                    }
+                }
+            }.resume()
         case .failure(let error):
-            throw error
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
         }
     }
     
-    
+    //MARK: urlComponents 를 만들어 주거나 에러를 던져줍니다.
     private func makeURLComponents(api: UrlSession) -> apiComponents{
         var components = URLComponents()
         components.scheme = api.scheme
@@ -52,7 +62,8 @@ class URLSessionManager {
         
     }
     
-    private func UrlTester<T: Decodable>(data: Data?, response: URLResponse?, error: Error?) -> apiModel<T> {
+    //MARK: URL 각종에러를 테스트하고 성공시 디코딩된 모델 실패시 Error를 줍니다.
+    private func DecodingTester<T: Decodable>(type: T.Type,data: Data?, response: URLResponse?, error: Error?) -> apiModel<T> {
         
         guard error == nil else {
             print("Url Request 시 에러가 존재")
@@ -71,27 +82,34 @@ class URLSessionManager {
             return .failure(urlError.errorResponse)
         }
         
+        do {
+            try errorCodeCase(caseNum: response.statusCode)
+            do{
+                let decodingData = try JSONDecoder().decode(T.self, from: data)
+                return .success(decodingData)
+            } catch(let error) {
+                return .failure(error)
+            }
+            
+        } catch(let error) {
+            return .failure(error)
+        }
         
     }
     
-    private func errorCodeCase(caseNum: Int) throws-> Error{
-        if caseNum == 400  {
-            throw errorCode._400
+    // MARK: 200번 성공시 아무런 동작을 수행하지 않습니다. 실패시에러를 던집니다.
+    private func errorCodeCase(caseNum: Int) throws {
+        switch caseNum {
+        case 200: return // 200번 성공
+        case 400: throw errorCode._400
+        case 401: throw errorCode._401
+        case 404: throw errorCode._404
+        case 429: throw errorCode._429
+        case 500...599: throw errorCode._5xx
+        default:
+            throw errorCode.not200
         }
-        if caseNum == 401 {
-            throw errorCode._401
-        }
-        if caseNum == 404 {
-            throw errorCode._404
-        }
-        if caseNum == 429 {
-            throw errorCode._429
-        }
-        if caseNum > 500 {
-            throw errorCode._5xx
-        }
-        
-        
     }
     
 }
+

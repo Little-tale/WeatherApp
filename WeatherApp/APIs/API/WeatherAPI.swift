@@ -29,6 +29,7 @@ enum errorCode:Error {
     case _404
     case _429
     case _5xx
+    case not200
     
     var message: String {
         switch self {
@@ -42,6 +43,8 @@ enum errorCode:Error {
             "요청이 너무 많습니다."
         case ._5xx:
             "예상치 못한 에러입니다."
+        case .not200:
+            "예상치 못한 에러가 발생했습니다 관리자에게 문의 바랍니다."
         }
     }
 }
