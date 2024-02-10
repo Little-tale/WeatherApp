@@ -27,7 +27,14 @@
 1. 일단 API를 분석해서 인소미아에서 테스트를 마치자
 
 --> https://api.openweathermap.org/data/2.5/ 가 BaseUrl
+--> 2.5/ weather or forecast
+ -> 현재 날씨 혹은 5일간 날씨
+  -> 날씨 아이콘은 icon : 01n 같이 날아옴
+  // https://openweathermap.org/img/wn/{10d}@2x.png
 
+Model
+- coord 안에 lon, lat
+- weather 안에
 
 2. 통신 테스트를 마치고
 3. 위치 권한 가져오는거 하고

@@ -15,6 +15,8 @@
 		7BB0A7202B762BAB00517D49 /* memo in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A71F2B762BAB00517D49 /* memo */; };
 		7BB0A7272B76883700517D49 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A7262B76883700517D49 /* .gitignore */; };
 		7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7292B76887300517D49 /* APIKey.swift */; };
+		7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A72B2B76F18900517D49 /* WeatherAPI.swift */; };
+		7BB0A72E2B76FF6B00517D49 /* WeaherAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A72D2B76FF6B00517D49 /* WeaherAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		7BB0A71F2B762BAB00517D49 /* memo */ = {isa = PBXFileReference; lastKnownFileType = text; path = memo; sourceTree = "<group>"; };
 		7BB0A7262B76883700517D49 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7BB0A7292B76887300517D49 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		7BB0A72B2B76F18900517D49 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		7BB0A72D2B76FF6B00517D49 /* WeaherAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaherAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +67,7 @@
 			children = (
 				7BB0A7282B76885100517D49 /* APIKey */,
 				7BB0A7252B76618900517D49 /* Assistance */,
-				7BB0A7242B76617500517D49 /* Manager */,
+				7BB0A7242B76617500517D49 /* APIs */,
 				7BB0A7232B76616900517D49 /* Model */,
 				7BB0A7222B76616200517D49 /* View */,
 				7BB0A7212B76614800517D49 /* TeststerGroup */,
@@ -99,11 +103,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7BB0A7242B76617500517D49 /* Manager */ = {
+		7BB0A7242B76617500517D49 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A7302B76FF8400517D49 /* API */,
+				7BB0A72F2B76FF7900517D49 /* Manager */,
 			);
-			path = Manager;
+			path = APIs;
 			sourceTree = "<group>";
 		};
 		7BB0A7252B76618900517D49 /* Assistance */ = {
@@ -119,6 +125,22 @@
 				7BB0A7292B76887300517D49 /* APIKey.swift */,
 			);
 			path = APIKey;
+			sourceTree = "<group>";
+		};
+		7BB0A72F2B76FF7900517D49 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A72D2B76FF6B00517D49 /* WeaherAPIManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7BB0A7302B76FF8400517D49 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A72B2B76F18900517D49 /* WeatherAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,9 +215,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB0A72E2B76FF6B00517D49 /* WeaherAPIManager.swift in Sources */,
 				7BB0A7102B762B7500517D49 /* ViewController.swift in Sources */,
 				7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */,
 				7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */,
+				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
 				7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
