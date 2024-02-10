@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         URLSessionManager.shared.fetch(type: WeatherAPIcurrentModel.self, api: WeatherApi.currentCity(id: 1835847)) { result in
             switch result{
             case .success(let model):
-                print(model)
+                // print(model)
                 let goViewModel = HomeViewModel(model: model)
                 self.test(viewModel: goViewModel)
             case .failure(let errors):
@@ -27,9 +27,10 @@ class ViewController: UIViewController {
         URLSessionManager.shared.fetch(type: WeatherAPIForecastModel.self, api: WeatherApi.foreCaseCity(id: 1835847)) { result in
             switch result{
             case .success(let success):
-                print(success) // 이 부분에서 파싱이 이루어져아 할것 같음
+                // print(success) // 이 부분에서 파싱이 이루어져아 할것 같음
                 // success.list
                 // print("🤩",success.list.first?.dtTxt)
+                DateAssistance.shared.devideCalendar(dateList: success.list)
             case .failure(let error):
                 print(error)
             }

@@ -16,23 +16,45 @@ import Foundation
 struct DateAssistance {
     static let shared = DateAssistance()
     private let dateFormatter = DateFormatter()
-    
+    // 2024-02-15 12:00:00
     private init() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
+        // TimeZone을 안하고 하니 날짜가 나뉘어 지지 않는 현상 발생
+        // dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 32400)
     }
     // MARK: API 에서 받은 문자열을 날짜로 변환
     private func dateFromAPI(dtTxt: String) -> Date? {
+        // print(dtTxt)
         return dateFormatter.date(from: dtTxt)
     }
     // MARK: 시간 제거해서 날짜만 나오게 함
     private func getOnlyDate(date: Date) -> Date? {
         let calendar = Calendar.current
         let afterCalendar = calendar.date(from: calendar.dateComponents([.year,.month,.day], from: date))
+         print(afterCalendar)
         return afterCalendar
     }
-    func devideCalendar() {
-        
+    func devideCalendar(dateList: [List]) {
+        var dateArray = [Date: [List]]()
+        for myDate in dateList {
+            guard let dateFormat = dateFromAPI(dtTxt: myDate.dtTxt) else {
+                print("날짜 변환 실패")
+                return
+            }
+            
+            guard let onlyDate = getOnlyDate(date: dateFormat) else {
+                print("시간만 제거 실패")
+                return
+            }
+            
+            dateArray[onlyDate, default: []].append(myDate)
+            //print(onlyDate)
+            //print(dateFormat)
+            //print(myDate)
+        }
+        // print(dateArray)
+    
     }
     
     
