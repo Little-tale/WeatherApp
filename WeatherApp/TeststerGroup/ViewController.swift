@@ -26,7 +26,8 @@ class ViewController: UIViewController {
         URLSessionManager.shared.fetch(type: WeatherAPIForecastModel.self, api: WeatherApi.foreCaseCity(id: 1835847)) { result in
             switch result{
             case .success(let success):
-                print(success)
+                print(success) // 이 부분에서 파싱이 이루어져아 할것 같음
+                // print("🤩",success.list.first?.dtTxt)
             case .failure(let error):
                 print(error)
             }
