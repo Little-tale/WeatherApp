@@ -108,8 +108,22 @@ struct WeatherAPIcurrentModel: Decodable, WeatherInfomation{
     let dt: Int // 데이터 계산 시간이라는데 이것도 해보
     let sys: Sys
     let timezone, id: Int // 초단위로 이동한다는데 써봐야 뭔질 알것같음
-    let name: String
+    let cityName: String // 도시이름
     let cod: String // Int로 올때 init에서 \() 문자열보간법 기릿
+    
+    enum CodingKeys:String, CodingKey {
+        case coord
+        case weather
+        case main
+        case visibility
+        case wind
+        case dt
+        case sys
+        case timezone
+        case id
+        case cityName = "name"
+        case cod
+    }
     
 }
 
