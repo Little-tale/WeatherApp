@@ -76,7 +76,11 @@ struct AllInOneModel: Decodable, WeatherInfomation {
 }
 
 
-
+// MARK: - 3시간씩 5일간 데이터 나옴
+// 결론은 날짜를 여기에서 계산을 해야 한다는 것인데 각 하루마다 데이터를 뽑아서
+// 거기서 평균을 내서 대표온도
+// 심지어 3일간의 데이터만 필요함
+// 무려 5일간 각 하루의 대표가 필요함
 struct List: Decodable, WeatherInfomation {
     let dt: Int // 예측된 시간
     let main: Main // V
@@ -86,7 +90,7 @@ struct List: Decodable, WeatherInfomation {
     let visibility: Int // V
     let pop: Double // 강수 확률
     // let sys: Sys // ? 하루중 일부?
-    let dtTxt: String
+    let dtTxt: String //MARK: -이부분이 날짜가 나옴 -> 2024-02-10 06:00:00 형식
     // let rain: Rain?
 
     enum CodingKeys: String, CodingKey {
@@ -109,7 +113,7 @@ struct WeatherAPIcurrentModel: Decodable, WeatherInfomation{
     let sys: Sys
     let timezone, id: Int // 초단위로 이동한다는데 써봐야 뭔질 알것같음
     let cityName: String // 도시이름
-    let cod: String // Int로 올때 init에서 \() 문자열보간법 기릿
+    let cod: Int // Int로 올때 init에서 \() 문자열보간법 기릿
     
     enum CodingKeys:String, CodingKey {
         case coord
@@ -187,7 +191,7 @@ struct Weather: Decodable {
 struct Wind: Decodable {
     let speed: Double // 바람세기
     let deg: Int // ???
-    let gust: Double // 돌풍
+    let gust: Double? // 돌풍
 }
 
 ////
