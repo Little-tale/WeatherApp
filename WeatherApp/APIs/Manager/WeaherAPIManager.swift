@@ -56,7 +56,7 @@ class URLSessionManager {
             print("컴포넌츠 url 변경 에러")
             return .failure(APIComponentsError.componentsToUrlFail)
         }
-        
+        // print(componentsUrl)
         let urlRequest = URLRequest(url: componentsUrl)
         return .success(urlRequest)
         
@@ -73,6 +73,7 @@ class URLSessionManager {
             print("Data가 존재하지 않음")
             return .failure(urlError.noData)
         }
+        // dump(String(data: data, encoding: .utf8))
         guard let response = response else{
             print("응답이 존재 하지 않음")
             return .failure(urlError.noResponse)
@@ -81,11 +82,12 @@ class URLSessionManager {
             print("응답 코드로 변경이 어려움")
             return .failure(urlError.errorResponse)
         }
-        
+        // print(response)
         do {
             try errorCodeCase(caseNum: response.statusCode)
             do{
                 let decodingData = try JSONDecoder().decode(T.self, from: data)
+                print(decodingData)
                 return .success(decodingData)
             } catch(let error) {
                 return .failure(error)

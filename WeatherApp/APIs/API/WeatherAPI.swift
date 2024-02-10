@@ -89,8 +89,11 @@ enum WeatherApi:UrlSession {
             queryItems.append(URLQueryItem(name: "id", value: "\(id)"))
         }
         queryItems.append(URLQueryItem(name: "lang", value: "kr"))
+        // [appid=67dd8c002ab73b647b1e095619430616, id=1835847, lang=kr]
+        // print(queryItems)
         return queryItems
     }
+    
     
     var method: String {
         switch self {
