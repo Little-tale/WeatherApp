@@ -7,15 +7,43 @@
 
 import Foundation
 
-enum APIManagerRequestError: Error{
+//enum APIManagerRequestError: Error{
+//    case unknownError
+//    case componentsError
+//}
+enum APIComponentsError: Error {
+    case noQuery
+    case componentsToUrlFail
+}
+enum URLError: Error {
     case noData
     case noResponse
     case errorResponse
     case failRequest
     case errorDecoding
     case cantStatusCoding
-    case unknownError
-    case componentsError
+}
+enum errorCode:Error {
+    case _400
+    case _401
+    case _404
+    case _429
+    case _5xx
+    
+    var message: String {
+        switch self {
+        case ._400:
+            "잘못된 요청입니다."
+        case ._401:
+            "API 토큰이 승인되지 않았거나 엑세스 권한없음"
+        case ._404:
+            "위치를 찾을 수 없거나, 등록되지 않은 지역입니다."
+        case ._429:
+            "요청이 너무 많습니다."
+        case ._5xx:
+            "예상치 못한 에러입니다."
+        }
+    }
 }
 
 /*
@@ -24,11 +52,11 @@ enum APIManagerRequestError: Error{
  */
 protocol UrlSession{
     // var baseUrl : String {get}
-    var query : [URLQueryItem?] {get}
+    var query : [URLQueryItem]? {get}
     // var header : [String: String] {get}
     var method : String {get}
     
-    var schem : String{get}
+    var scheme : String{get}
     var host: String {get}
     var path: String {get}
 }
@@ -39,13 +67,13 @@ enum WeatherApi:UrlSession {
     case foreCase(lat: Double, Lon: Double)
     case foreCaseCity(id: Int)
     
-    var schem : String {
+    var scheme : String {
         switch self {
         default: return "https"
         }
     }
     
-    var query: [URLQueryItem?] {
+    var query: [URLQueryItem]? {
         var queryItems:[URLQueryItem] = [URLQueryItem(name: "appid", value: APIKey.weather.key)]
         
         switch self {
@@ -57,6 +85,7 @@ enum WeatherApi:UrlSession {
         case .currentCity(let id), .foreCaseCity(id: let id):
             queryItems.append(URLQueryItem(name: "id", value: "\(id)"))
         }
+        queryItems.append(URLQueryItem(name: "lang", value: "kr"))
         return queryItems
     }
     
