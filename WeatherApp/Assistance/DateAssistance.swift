@@ -8,34 +8,33 @@
 // 날짜를 파싱하기 위에 필요한건
 // DateFormmatter -> TimeZone(세계 각 지역별 시간대가 달라 그 시간대를 나타내기 위한 파데타입이다.)
 // 2024-02-10 06:00:00 형식
+// API는 Timezone: 32400 이라는데
 import Foundation
 
+// https://velog.io/@loganberry/Swift-%EB%82%A0%EC%A7%9C%EC%99%80-%EC%8B%9C%EA%B0%84-%EB%8B%A4%EB%A3%A8%EA%B8%B0-2-feat.-DateFormatter-DateComponents
+
 struct DateAssistance {
-    let date = Date()
-    let formatter = DateFormatter()
-    let dateFor = "yyyy-MM-dd HH:mm:ss"
+    static let shared = DateAssistance()
+    private let dateFormatter = DateFormatter()
     
-    func getTime(date: String) -> String{
-        // string -> Date -> Date -> String
-        // 데이트 포메터 -> 데이트포멧터 생성
-        // -> 데이터 포멧 형식을 정함
-        // -> 데이터 포멧에 해당 양식에 맞는 문자열 전달후 받음
-        // -> 받고나서 형식을 변경함
-        // -> 형식을 변경하였지만 타입을 String으로 변경
-        let dateFormetter = DateFormatter()
-        dateFormetter.dateFormat = dateFor
+    private init() {
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        guard let dateDate = dateFormetter.date(from: date) else {return ""}
-        
-        // a 오전 오후 나옴
-        dateFormetter.dateFormat = "dd:"
-        
-        dateFormetter.locale = Locale(identifier: "ko_KR")
-        
-        let dateString = dateFormetter.string(from: dateDate)
-        
-        return dateString
     }
-}
+    // MARK: API 에서 받은 문자열을 날짜로 변환
+    private func dateFromAPI(dtTxt: String) -> Date? {
+        return dateFormatter.date(from: dtTxt)
+    }
+    // MARK: 시간 제거해서 날짜만 나오게 함
+    private func getOnlyDate(date: Date) -> Date? {
+        let calendar = Calendar.current
+        let afterCalendar = calendar.date(from: calendar.dateComponents([.year,.month,.day], from: date))
+        return afterCalendar
+    }
+    func devideCalendar() {
+        
+    }
+    
+    
     
 }

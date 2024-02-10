@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
+        // MARK: 현재 날씨 데이터 요청
         URLSessionManager.shared.fetch(type: WeatherAPIcurrentModel.self, api: WeatherApi.currentCity(id: 1835847)) { result in
             switch result{
             case .success(let model):
@@ -23,16 +23,19 @@ class ViewController: UIViewController {
                 print(errors)
             }
         }
+        // MARK: 주간 날씨 데이터 요청
         URLSessionManager.shared.fetch(type: WeatherAPIForecastModel.self, api: WeatherApi.foreCaseCity(id: 1835847)) { result in
             switch result{
             case .success(let success):
                 print(success) // 이 부분에서 파싱이 이루어져아 할것 같음
+                // success.list
                 // print("🤩",success.list.first?.dtTxt)
             case .failure(let error):
                 print(error)
             }
         }
     }
+    
     func test(viewModel: HomeViewModel ) {
         print(viewModel.cityName)
         print(viewModel.description)
