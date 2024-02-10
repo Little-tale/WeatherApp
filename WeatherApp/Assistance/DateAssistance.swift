@@ -55,8 +55,14 @@ struct DateAssistance {
         }
         // print(dateArray)
     
+        for (date, lists) in dateArray {
+            print(dateFormatter.string(from: date))
+            print(lists.count)
+        }
+        
     }
     
     
     
 }
+ 
