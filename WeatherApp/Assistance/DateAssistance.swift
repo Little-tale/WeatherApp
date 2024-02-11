@@ -36,7 +36,7 @@ struct DateAssistance {
         // TimeZone.current
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         self.timeZone = timeZone
-        dateFormatter.locale = .autoupdatingCurrent
+        //dateFormatter.locale = .autoupdatingCurrent
         print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
         // dateFormatter.locale = Locale(identifier: "ko_KR")
     }
@@ -55,7 +55,7 @@ struct DateAssistance {
         var calendar = Calendar.current
         if let timeZOne = TimeZone(secondsFromGMT: self.timeZone) {
             calendar.timeZone = timeZOne
-            // calendar.locale = .init(identifier: "ko_KR")
+             calendar.locale = .init(identifier: "ko_KR")
         }
         print("🐣🐣🐣🐣🐣🐣",calendar)
         // print("🙌🙌🙌🙌🙌",calendar)
