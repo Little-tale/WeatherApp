@@ -10,12 +10,11 @@
 // 2024-02-10 06:00:00 형식
 // API는 Timezone: 32400 이라는데
 import Foundation
-
-
 // https://velog.io/@loganberry/Swift-%EB%82%A0%EC%A7%9C%EC%99%80-%EC%8B%9C%EA%B0%84-%EB%8B%A4%EB%A3%A8%EA%B8%B0-2-feat.-DateFormatter-DateComponents
 typealias dataDictionry = [Date: [List]]
+typealias dateDictionryForString = [String:[List]]
 typealias resultDic = Result<dataDictionry, dateError>
-typealias resultDic2 = Result<String,dateError>
+typealias resultDic2 = Result<dateDictionryForString,dateError>
 
 enum dateError: Error {
     case cantChangeDate
@@ -26,19 +25,14 @@ struct DateAssistance {
     // static let shared = DateAssistance()
     private let dateFormatter = DateFormatter()
     private var timeZone = 32400
+    
     // 2024-02-15 12:00:00
     init(timeZone: Int) {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        // TimeZone을 안하고 하니 날짜가 나뉘어 지지 않는 현상 발생
-        // dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-        // print(TimeZone.current )
-        // dateFormatter.timeZone.secondsFromGMT(for: timeZone)
-        // TimeZone.current
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         self.timeZone = timeZone
-        //dateFormatter.locale = .autoupdatingCurrent
         print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
-        // dateFormatter.locale = Locale(identifier: "ko_KR")
+        
     }
     
     
@@ -51,26 +45,36 @@ struct DateAssistance {
     
     // MARK: 시간 제거해서 날짜만 나오게 함
     // -> 캘린더로 하니 연도 넣어주어야 해서 생각해보니 넣어야 겠네
-    private func getOnlyDate(date: Date) -> Date? {
+    private func getOnlyDate(date: Date) -> String? {
         var calendar = Calendar.current
-        if let timeZOne = TimeZone(secondsFromGMT: self.timeZone) {
+        // 이유는 모르겠으나 0으로 주니 00:00:00 으로 잘 변환된다
+        if let timeZOne = TimeZone(secondsFromGMT: 0) {
             calendar.timeZone = timeZOne
              calendar.locale = .init(identifier: "ko_KR")
         }
-        print("🐣🐣🐣🐣🐣🐣",calendar)
-        // print("🙌🙌🙌🙌🙌",calendar)
+        // 2024-02-14 18:00:00
+        // 켈린더Date를 생성하는데 DateComponents 객체를 받아 Date를 추출합니다.
+        // DateComponents는 각 년,월,일 만 추출합니다. -> 00:00:00 이 기댓값
+        
         let afterCalendar = calendar.date(from: calendar.dateComponents([.year,.month,.day], from: date))
-        // print("🥸🥸🥸🥸🥸🥸",afterCalendar)
-        print("🥸🥸🥸🥸🥸🥸",dateFormatter.string(from: date))
-        return afterCalendar
+        
+        // 이전스트링에 위 과정이 처리된 Date를 문자열로 변환시킵니다. 2024-01-01 ~~~
+        var beforeString = afterCalendar?.description
+        // 문자열에 -가 있다면 ""으로 변환시킵니다. 20240101 00:00:00: +0000 기댓값
+        beforeString = beforeString?.replacingOccurrences(of: "-", with: "")
+        // 공백을 기준으로 배열로 변환 시킵니다. -> ["20240215", "00:00:00", "+0000"]
+        let beforeStringArray = beforeString?.components(separatedBy: " ")
+        // 이중 첫번째만 밖으로 전달해 줍니다.
+        // print(beforeStringArray)
+        return beforeStringArray?.first
     }
     
     
     // MARK: 날짜별 분리
-    func devideCalendar(dateList: [List]) -> resultDic{
+    func devideCalendar(dateList: [List]) -> resultDic2{
         // 날짜를 Key 로 value는 List 배열로
         
-        var dateDic = [Date: [List]]()
+        var dateDic = [String: [List]]()
         
         for myDate in dateList {
             guard let dateFormat = dateFromAPI(dtTxt: myDate.dtTxt) else {
@@ -88,21 +92,15 @@ struct DateAssistance {
             
         }
         
-//        for mydate in dateList {
-//            if let date = dateFormatter.date(from: mydate.dtTxt),
-//               let dateOnly = getOnlyDate(date: date){
-//                dateDic[dateOnly, default: []].append(mydate)
-//            }
-//        }
-        
-        // print(dateDic)
-        // 각 키에 8개 혹은 3개 등 으로 값을 가지고 있음
         return .success(dateDic)
     }
-    func devideTime(DateDic: [Date: [List]]) {
-        for (date, lists) in DateDic {
-            print("🥰🥰🥰🥰🥰",date)
-        }
+    
+    
+    // Dictionary Key를 순서대로 정렬 해드립니다.
+    func getSortedKey(DateDic: [String: [List]]) -> Array<String> {
+        let sortedKeys = DateDic.keys.sorted()
+        print(sortedKeys)
+        return sortedKeys
     }
     
     var getTime: String {

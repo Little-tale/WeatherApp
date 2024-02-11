@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
     var dateAssistance: DateAssistance = .init(timeZone: 0)
-    var dateDictionry = dataDictionry() {
+    var dateDictionry = dateDictionryForString() {
         didSet{
-            dateAssistance.devideTime(DateDic: dateDictionry)
+            let keys = dateAssistance.getSortedKey(DateDic: dateDictionry)
+            
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class ViewController: UIViewController {
                 let goViewModel = HomeViewModel(model: model)
               
                 self.dateAssistance = DateAssistance(timeZone: model.timezone)
-                self.test(viewModel: goViewModel)
+                
             case .failure(let errors):
                 print(errors)
             }
@@ -46,14 +48,6 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
-    }
-    
-    func test(viewModel: HomeViewModel ) {
-//        print(viewModel.cityName)
-//        print(viewModel.description)
-//        print(viewModel.maxTemp)
-//        print(viewModel.minTemp)
-//        print(viewModel.temperature)
     }
     
     
