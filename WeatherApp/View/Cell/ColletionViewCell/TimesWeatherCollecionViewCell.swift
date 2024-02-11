@@ -16,13 +16,16 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
     let stackView = UIStackView()
     
     override func configureHierarchy() {
+        // self.layoutIfNeeded()
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(tempLabel)
+        stackView.addArrangedSubview(timeLabel)
         stackView.addArrangedSubview(weatherImageView)
         stackView.addArrangedSubview(tempLabel)
         
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
+        // stackView.insetsLayoutMarginsFromSafeArea = true
+
         stackView.alignment = .center
         stackView.spacing = 8
     }
@@ -32,8 +35,19 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
         }
         
         weatherImageView.snp.makeConstraints { make in
-            make.size.equalTo(CGSize(width: 50, height: 50))
+            // make.size.equalTo(CGSize(width: 30, height: 30))
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(weatherImageView.snp.width)
         }
+        timeLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.width.equalToSuperview()
+        }
+        tempLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.width.equalToSuperview()
+        }
+        
     }
     override func designView() {
         timeLabel.textAlignment = .center

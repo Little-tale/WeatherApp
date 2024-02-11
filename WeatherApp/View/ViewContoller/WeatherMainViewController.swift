@@ -89,7 +89,7 @@ class WeatherMainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        homeView.tableView.layoutIfNeeded()
+        // homeView.tableView.layoutIfNeeded()
     }
     
 }

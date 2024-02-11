@@ -25,7 +25,7 @@ class MainHomeTableViewCell:BaseTableCell {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).inset(12)
             make.horizontalEdges.bottom.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(120).priority(800)
         }
     }
     
