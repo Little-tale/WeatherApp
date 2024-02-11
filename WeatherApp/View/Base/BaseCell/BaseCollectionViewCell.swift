@@ -1,5 +1,5 @@
 //
-//  BaseCell.swift
+//  BaseCollecionViewCell.swift
 //  WeatherApp
 //
 //  Created by Jae hyung Kim on 2/11/24.
@@ -7,10 +7,9 @@
 
 import UIKit
 
-class BaseTableCell: UITableViewCell{
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+class BaseCollectionViewCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         all()
     }
     
@@ -22,7 +21,6 @@ class BaseTableCell: UITableViewCell{
         configureHierarchy()
         configureLayout()
         designView()
-        register()
     }
     
     func configureHierarchy(){
@@ -34,8 +32,4 @@ class BaseTableCell: UITableViewCell{
     func designView(){
         
     }
-    func register(){
-        
-    }
-    
 }

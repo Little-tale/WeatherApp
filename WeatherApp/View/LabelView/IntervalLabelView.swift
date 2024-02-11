@@ -27,12 +27,13 @@ class IntervalLabelView: BaseView {
     override func configureLayout() {
         imageView.snp.makeConstraints { make in
             make.leading.verticalEdges.equalToSuperview().inset(12)
-            // make.width.equalTo(40)
+            make.width.equalTo(20)
             make.centerY.equalToSuperview()
         }
         label.snp.makeConstraints { make in
-            make.leading.equalTo(imageView).inset(8)
-            make.verticalEdges.trailing.equalToSuperview()
+            make.leading.equalTo(imageView.snp.trailing).inset( -8 )
+            make.verticalEdges.equalToSuperview()
+            make.trailing.greaterThanOrEqualTo(self.safeAreaLayoutGuide).inset(8)
         }
     }
     func settingLabel(time: Int) {

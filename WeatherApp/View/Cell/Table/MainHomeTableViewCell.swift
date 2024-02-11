@@ -13,8 +13,8 @@ class MainHomeTableViewCell:BaseTableCell {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCellLayout)
     
     override func configureHierarchy() {
-        self.addSubview(topView)
-        self.addSubview(collectionView)
+        contentView.addSubview(topView)
+        contentView.addSubview(collectionView)
     }
     override func configureLayout() {
         topView.snp.makeConstraints { make in
@@ -25,10 +25,16 @@ class MainHomeTableViewCell:BaseTableCell {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).inset(12)
             make.horizontalEdges.bottom.equalToSuperview()
+            make.height.equalTo(120)
         }
     }
     
-    
+    override func register(){
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reusableIdentifier)
+        collectionView.register(TimesWeatherCollecionViewCell.self, forCellWithReuseIdentifier: TimesWeatherCollecionViewCell.reusableIdentifier)
+        
+        
+    }
     
     var configureCellLayout : UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()

@@ -79,20 +79,23 @@ class WeatherMainViewController: UIViewController {
         
         
     }
+    // MARK: 테이블뷰 딜리게이트 데이타 소스 + 오토레이아웃
     func tableViewRegister(){
         homeView.tableView.delegate = self
         homeView.tableView.dataSource = self
+        homeView.tableView.rowHeight = UITableView.automaticDimension
+        homeView.tableView.estimatedRowHeight = 100
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        homeView.tableView.layoutIfNeeded()
     }
     
 }
 extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return homeSession.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,8 +103,12 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             print("셀 변환 실패")
             return UITableViewCell()
         }
-        
+        cell.topView.label.text = homeSession.allCases[indexPath.row].title
         cell.backgroundColor = .gray
+        
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        
         return cell
     }
     
@@ -118,6 +125,24 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     }
     
 }
+
+extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimesWeatherCollecionViewCell.reusableIdentifier, for: indexPath) as? TimesWeatherCollecionViewCell else {
+            print("컬렉션뷰 셀 에러")
+            return UICollectionViewCell()
+        }
+        cell.backgroundColor = .brown
+        return cell
+    }
+    
+    
+}
+
 
 //#Preview{
 //    WeatherMainViewController()

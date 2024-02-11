@@ -32,6 +32,10 @@
 		7BB0A7562B78FAE800517D49 /* MainHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7552B78FAE800517D49 /* MainHomeTableViewCell.swift */; };
 		7BB0A7592B78FB0C00517D49 /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7582B78FB0C00517D49 /* BaseTableCell.swift */; };
 		7BB0A75E2B78FC6C00517D49 /* IntervalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A75D2B78FC6C00517D49 /* IntervalLabelView.swift */; };
+		7BB0A7602B790B2200517D49 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A75F2B790B2200517D49 /* Session.swift */; };
+		7BB0A7642B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7632B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift */; };
+		7BB0A7662B790D3400517D49 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7652B790D3400517D49 /* BaseCollectionViewCell.swift */; };
+		7BB0A7692B790E0A00517D49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A7682B790E0A00517D49 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,9 @@
 		7BB0A7552B78FAE800517D49 /* MainHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeTableViewCell.swift; sourceTree = "<group>"; };
 		7BB0A7582B78FB0C00517D49 /* BaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		7BB0A75D2B78FC6C00517D49 /* IntervalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalLabelView.swift; sourceTree = "<group>"; };
+		7BB0A75F2B790B2200517D49 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		7BB0A7632B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesWeatherCollecionViewCell.swift; sourceTree = "<group>"; };
+		7BB0A7652B790D3400517D49 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB0A7692B790E0A00517D49 /* Kingfisher in Frameworks */,
 				7BB0A74A2B78BD6E00517D49 /* SnapKit in Frameworks */,
 				7BB0A74C2B78BD6E00517D49 /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -138,6 +146,7 @@
 			children = (
 				7BB0A7342B7762B100517D49 /* ViewModel */,
 				7BB0A7312B7703AB00517D49 /* APIModel */,
+				7BB0A75F2B790B2200517D49 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,7 +254,8 @@
 		7BB0A7532B78FA7C00517D49 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				7BB0A7552B78FAE800517D49 /* MainHomeTableViewCell.swift */,
+				7BB0A7622B790CEF00517D49 /* ColletionViewCell */,
+				7BB0A7612B790CE200517D49 /* Table */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -254,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB0A7582B78FB0C00517D49 /* BaseTableCell.swift */,
+				7BB0A7652B790D3400517D49 /* BaseCollectionViewCell.swift */,
 			);
 			path = BaseCell;
 			sourceTree = "<group>";
@@ -264,6 +275,22 @@
 				7BB0A75D2B78FC6C00517D49 /* IntervalLabelView.swift */,
 			);
 			path = LabelView;
+			sourceTree = "<group>";
+		};
+		7BB0A7612B790CE200517D49 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7552B78FAE800517D49 /* MainHomeTableViewCell.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		7BB0A7622B790CEF00517D49 /* ColletionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7632B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift */,
+			);
+			path = ColletionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +312,7 @@
 			packageProductDependencies = (
 				7BB0A7492B78BD6E00517D49 /* SnapKit */,
 				7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */,
+				7BB0A7682B790E0A00517D49 /* Kingfisher */,
 			);
 			productName = WeatherApp;
 			productReference = 7BB0A7082B762B7500517D49 /* WeatherApp.app */;
@@ -316,6 +344,7 @@
 			mainGroup = 7BB0A6FF2B762B7500517D49;
 			packageReferences = (
 				7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7BB0A7672B790E0A00517D49 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 7BB0A7092B762B7500517D49 /* Products */;
 			projectDirPath = "";
@@ -345,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB0A7602B790B2200517D49 /* Session.swift in Sources */,
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
 				7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */,
 				7BB0A75E2B78FC6C00517D49 /* IntervalLabelView.swift in Sources */,
@@ -358,11 +388,13 @@
 				7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */,
 				7BB0A73A2B777E6900517D49 /* DateAssistance.swift in Sources */,
 				7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */,
+				7BB0A7642B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift in Sources */,
 				7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */,
 				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
 				7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */,
 				7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */,
 				7BB0A7362B7762C200517D49 /* HomeTableHeaderModel.swift in Sources */,
+				7BB0A7662B790D3400517D49 /* BaseCollectionViewCell.swift in Sources */,
 				7BB0A7562B78FAE800517D49 /* MainHomeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +624,14 @@
 				minimumVersion = 5.7.0;
 			};
 		};
+		7BB0A7672B790E0A00517D49 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -604,6 +644,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		7BB0A7682B790E0A00517D49 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BB0A7672B790E0A00517D49 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
