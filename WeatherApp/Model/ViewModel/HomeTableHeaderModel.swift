@@ -11,7 +11,7 @@ import Foundation
 // 메인화면 위에있는 CityName, temp, maxTemp, minTemp
 // 3시간 간격은 어떻게 해야하는지 알아봐야 할듯 하다.
 // -> forecast 가 3시간 간격의 데이터로 5일간의 일기예보를 알수있다.
-struct HomeViewModel {
+struct HomeTableHeaderModel {
     let cityName: String
     let temperature : String
     let description : String
@@ -27,3 +27,4 @@ struct HomeViewModel {
         self.minTemp = TempAssistance.min(temp: model.main.tempMin).get
     }
 }
+

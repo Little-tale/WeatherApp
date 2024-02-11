@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70B2B762B7500517D49 /* AppDelegate.swift */; };
 		7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70D2B762B7500517D49 /* SceneDelegate.swift */; };
-		7BB0A7102B762B7500517D49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70F2B762B7500517D49 /* ViewController.swift */; };
+		7BB0A7102B762B7500517D49 /* WeatherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70F2B762B7500517D49 /* WeatherMainViewController.swift */; };
 		7BB0A7152B762B7600517D49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A7142B762B7600517D49 /* Assets.xcassets */; };
 		7BB0A7182B762B7600517D49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A7162B762B7600517D49 /* LaunchScreen.storyboard */; };
 		7BB0A7202B762BAB00517D49 /* memo in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A71F2B762BAB00517D49 /* memo */; };
@@ -18,16 +18,23 @@
 		7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A72B2B76F18900517D49 /* WeatherAPI.swift */; };
 		7BB0A72E2B76FF6B00517D49 /* WeaherAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A72D2B76FF6B00517D49 /* WeaherAPIManager.swift */; };
 		7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7322B7703B900517D49 /* APIModel.swift */; };
-		7BB0A7362B7762C200517D49 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7352B7762C200517D49 /* HomeViewModel.swift */; };
+		7BB0A7362B7762C200517D49 /* HomeTableHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7352B7762C200517D49 /* HomeTableHeaderModel.swift */; };
 		7BB0A7382B77670800517D49 /* TempAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7372B77670800517D49 /* TempAssistance.swift */; };
 		7BB0A73A2B777E6900517D49 /* DateAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7392B777E6900517D49 /* DateAssistance.swift */; };
+		7BB0A73F2B78BA1200517D49 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A73E2B78BA1200517D49 /* MainHomeView.swift */; };
+		7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7422B78BA5500517D49 /* BaseView.swift */; };
+		7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7462B78BB3C00517D49 /* CurrentWeatherHeaderView.swift */; };
+		7BB0A74A2B78BD6E00517D49 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A7492B78BD6E00517D49 /* SnapKit */; };
+		7BB0A74C2B78BD6E00517D49 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */; };
+		7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A74D2B78CABD00517D49 /* TestViewContoller.swift */; };
+		7BB0A7502B78D80600517D49 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A74F2B78D80600517D49 /* Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7BB0A7082B762B7500517D49 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB0A70B2B762B7500517D49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BB0A70D2B762B7500517D49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7BB0A70F2B762B7500517D49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7BB0A70F2B762B7500517D49 /* WeatherMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMainViewController.swift; sourceTree = "<group>"; };
 		7BB0A7142B762B7600517D49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB0A7172B762B7600517D49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BB0A7192B762B7600517D49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,9 +44,14 @@
 		7BB0A72B2B76F18900517D49 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		7BB0A72D2B76FF6B00517D49 /* WeaherAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaherAPIManager.swift; sourceTree = "<group>"; };
 		7BB0A7322B7703B900517D49 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
-		7BB0A7352B7762C200517D49 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7BB0A7352B7762C200517D49 /* HomeTableHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderModel.swift; sourceTree = "<group>"; };
 		7BB0A7372B77670800517D49 /* TempAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempAssistance.swift; sourceTree = "<group>"; };
 		7BB0A7392B777E6900517D49 /* DateAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAssistance.swift; sourceTree = "<group>"; };
+		7BB0A73E2B78BA1200517D49 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
+		7BB0A7422B78BA5500517D49 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		7BB0A7462B78BB3C00517D49 /* CurrentWeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherHeaderView.swift; sourceTree = "<group>"; };
+		7BB0A74D2B78CABD00517D49 /* TestViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewContoller.swift; sourceTree = "<group>"; };
+		7BB0A74F2B78D80600517D49 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB0A74A2B78BD6E00517D49 /* SnapKit in Frameworks */,
+				7BB0A74C2B78BD6E00517D49 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +99,7 @@
 				7BB0A7162B762B7600517D49 /* LaunchScreen.storyboard */,
 				7BB0A7192B762B7600517D49 /* Info.plist */,
 				7BB0A71F2B762BAB00517D49 /* memo */,
+				7BB0A74F2B78D80600517D49 /* Extention.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -92,7 +107,7 @@
 		7BB0A7212B76614800517D49 /* TeststerGroup */ = {
 			isa = PBXGroup;
 			children = (
-				7BB0A70F2B762B7500517D49 /* ViewController.swift */,
+				7BB0A74D2B78CABD00517D49 /* TestViewContoller.swift */,
 			);
 			path = TeststerGroup;
 			sourceTree = "<group>";
@@ -100,6 +115,10 @@
 		7BB0A7222B76616200517D49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A7452B78BB1A00517D49 /* TabelHearderView */,
+				7BB0A7402B78BA2500517D49 /* Base */,
+				7BB0A73C2B78B9F000517D49 /* HomeView */,
+				7BB0A73B2B78B9D900517D49 /* ViewContoller */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,9 +185,49 @@
 		7BB0A7342B7762B100517D49 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7BB0A7352B7762C200517D49 /* HomeViewModel.swift */,
+				7BB0A7352B7762C200517D49 /* HomeTableHeaderModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7BB0A73B2B78B9D900517D49 /* ViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A70F2B762B7500517D49 /* WeatherMainViewController.swift */,
+			);
+			path = ViewContoller;
+			sourceTree = "<group>";
+		};
+		7BB0A73C2B78B9F000517D49 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A73E2B78BA1200517D49 /* MainHomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		7BB0A7402B78BA2500517D49 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7412B78BA3100517D49 /* BaseView */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7BB0A7412B78BA3100517D49 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7422B78BA5500517D49 /* BaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		7BB0A7452B78BB1A00517D49 /* TabelHearderView */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7462B78BB3C00517D49 /* CurrentWeatherHeaderView.swift */,
+			);
+			path = TabelHearderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +246,10 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				7BB0A7492B78BD6E00517D49 /* SnapKit */,
+				7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */,
+			);
 			productName = WeatherApp;
 			productReference = 7BB0A7082B762B7500517D49 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +278,9 @@
 				Base,
 			);
 			mainGroup = 7BB0A6FF2B762B7500517D49;
+			packageReferences = (
+				7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 7BB0A7092B762B7500517D49 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,15 +310,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
+				7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */,
 				7BB0A72E2B76FF6B00517D49 /* WeaherAPIManager.swift in Sources */,
 				7BB0A7382B77670800517D49 /* TempAssistance.swift in Sources */,
-				7BB0A7102B762B7500517D49 /* ViewController.swift in Sources */,
+				7BB0A7502B78D80600517D49 /* Extention.swift in Sources */,
+				7BB0A7102B762B7500517D49 /* WeatherMainViewController.swift in Sources */,
+				7BB0A73F2B78BA1200517D49 /* MainHomeView.swift in Sources */,
 				7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */,
 				7BB0A73A2B777E6900517D49 /* DateAssistance.swift in Sources */,
 				7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */,
+				7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */,
 				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
+				7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */,
 				7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */,
-				7BB0A7362B7762C200517D49 /* HomeViewModel.swift in Sources */,
+				7BB0A7362B7762C200517D49 /* HomeTableHeaderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +542,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7BB0A7492B78BD6E00517D49 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7BB0A7002B762B7500517D49 /* Project object */;
 }

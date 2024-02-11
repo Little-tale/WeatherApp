@@ -25,10 +25,11 @@ struct DateAssistance {
     // static let shared = DateAssistance()
     private let dateFormatter = DateFormatter()
     private var timeZone = 32400
-    
+    private var weatherApiDateFormat = "yyyy-MM-dd HH:mm:ss"
+    var time:[Int] = []
     // 2024-02-15 12:00:00
     init(timeZone: Int) {
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = weatherApiDateFormat
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         self.timeZone = timeZone
         print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
@@ -37,11 +38,38 @@ struct DateAssistance {
     
     
     // MARK: API 에서 받은 문자열을 날짜로 변환
-    private func dateFromAPI(dtTxt: String) -> Date? {
+    func dateFromAPI(dtTxt: String) -> Date? {
         // print(dtTxt)
         return dateFormatter.date(from: dtTxt)
     }
-    
+    // MARK: dtTxt를 시간만 돌려드립니다
+    func getOnlyTime(dtText:String) -> String{
+        let date = dateFormatter.date(from: dtText)
+        
+        guard let date = date else {
+            print("날짜 변환에 실패: getOnlyTime")
+            return ""
+        }
+        
+        var calendar = Calendar.current
+        if let timeZOne = TimeZone(secondsFromGMT: 0) {
+            calendar.timeZone = timeZOne
+             calendar.locale = .init(identifier: "ko_KR")
+        }
+        
+        let timeCalendar = calendar.date(from: calendar.dateComponents([.hour], from: date))
+        
+        guard let timeString = timeCalendar?.description else {
+            print("변환실패 getOnlyTime")
+            return ""
+        }
+        
+        let timeArray = timeString.components(separatedBy: " ")
+        
+        
+        
+        return timeArray[1]
+    }
     
     // MARK: 시간 제거해서 날짜만 나오게 함
     // -> 캘린더로 하니 연도 넣어주어야 해서 생각해보니 넣어야 겠네
@@ -75,7 +103,8 @@ struct DateAssistance {
         // 날짜를 Key 로 value는 List 배열로
         
         var dateDic = [String: [List]]()
-        
+        var testDic = [Int: [List]]()
+        var IndexPathRow = 0
         for myDate in dateList {
             guard let dateFormat = dateFromAPI(dtTxt: myDate.dtTxt) else {
                 print("날짜 변환 실패")
@@ -86,39 +115,66 @@ struct DateAssistance {
                 print("시간만 제거 실패")
                 return .failure(.cantOnlyDate)
             }
-            print(onlyDate)
-
+            
             dateDic[onlyDate, default: []].append(myDate)
             
+            testDic[IndexPathRow, default: []].append(myDate)
         }
-        
+        print(testDic.keys)
         return .success(dateDic)
     }
     
     
-    // Dictionary Key를 순서대로 정렬 해드립니다.
-    func getSortedKey(DateDic: [String: [List]]) -> Array<String> {
+    //MARK: Dictionary Key를 순서대로 정렬 해드립니다.
+    // -> 키값을 Int로 변환하는 기능을 추가하겠습니다.
+    func getSortedIndexList(DateDic: [String: [List]]) -> [Int:[List]] {
         let sortedKeys = DateDic.keys.sorted()
         print(sortedKeys)
-        return sortedKeys
+        
+        var indexDictionary = [Int: [List]]()
+        
+        // sortedKeys.enumerated()
+        // 배열을 각 0,1,2,3 같은 키순으로 튜플형 리스트
+        for (indexKey, lists) in sortedKeys.enumerated() {
+            if let list = DateDic[lists] {
+                indexDictionary[indexKey] = list
+            }
+        }
+        
+        return indexDictionary
     }
     
-    var getTime: String {
-
-        let dateFormetter = DateFormatter()
-        dateFormetter.dateFormat = "yyyy-MM-dd HH:mm"
+    
+    //MARK: 날짜를 요일로 변환해 드립니다.
+    func getDayOfWeek(dtText: String) {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = weatherApiDateFormat
+        dateformatter.locale = Locale(identifier: "ko")
+        let date = dateformatter.date(from: dtText)
         
-        guard let dateDate = dateFormetter.date(from: "yyyy-MM-dd HH:mm") else {return ""}
-        
-        // a 오전 오후 나옴
-        dateFormetter.dateFormat = "HH:mm a"
-        
-        dateFormetter.locale = Locale(identifier: "ko_KR")
-        
-        let dateString = dateFormetter.string(from: dateDate)
-        
-        return dateString
+        dateformatter.dateFormat = "E요일"
+        guard let date = date else {
+            print("날짜 변환 실패입니다.")
+            return
+        }
+        let string = dateformatter.string(from: date)
+        print(string)
     }
+    
+//    var getTime: String {
+//        let dateFormetter = DateFormatter()
+//        dateFormetter.dateFormat = "yyyy-MM-dd HH:mm"
+//        guard let dateDate = dateFormetter.date(from: "yyyy-MM-dd HH:mm") else {return ""}
+//        
+//        // a 오전 오후 나옴
+//        dateFormetter.dateFormat = "HH:mm a"
+//        
+//        dateFormetter.locale = Locale(identifier: "ko_KR")
+//        
+//        let dateString = dateFormetter.string(from: dateDate)
+//        
+//        return dateString
+//    }
     
 }
  
