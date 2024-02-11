@@ -42,6 +42,7 @@ struct DateAssistance {
         // print(dtTxt)
         return dateFormatter.date(from: dtTxt)
     }
+    
     // MARK: dtTxt를 시간만 돌려드립니다
     func getOnlyTime(dtText:String) -> String{
         print(dtText)
@@ -91,7 +92,7 @@ struct DateAssistance {
         // 날짜를 Key 로 value는 List 배열로
         
         var dateDic = [String: [List]]()
-        var testDic = [Int: [List]]()
+       
         var IndexPathRow = 0
         for myDate in dateList {
             guard let dateFormat = dateFromAPI(dtTxt: myDate.dtTxt) else {
@@ -105,10 +106,9 @@ struct DateAssistance {
             }
             
             dateDic[onlyDate, default: []].append(myDate)
-            
-            testDic[IndexPathRow, default: []].append(myDate)
+        
         }
-        print(testDic.keys)
+        
         return .success(dateDic)
     }
     
@@ -149,20 +149,6 @@ struct DateAssistance {
         print(string)
     }
     
-//    var getTime: String {
-//        let dateFormetter = DateFormatter()
-//        dateFormetter.dateFormat = "yyyy-MM-dd HH:mm"
-//        guard let dateDate = dateFormetter.date(from: "yyyy-MM-dd HH:mm") else {return ""}
-//        
-//        // a 오전 오후 나옴
-//        dateFormetter.dateFormat = "HH:mm a"
-//        
-//        dateFormetter.locale = Locale(identifier: "ko_KR")
-//        
-//        let dateString = dateFormetter.string(from: dateDate)
-//        
-//        return dateString
-//    }
     
 }
  

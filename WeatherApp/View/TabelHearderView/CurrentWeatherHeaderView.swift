@@ -42,7 +42,7 @@ class CurrentWeatherHeaderView: BaseView {
             make.centerY.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
             make.width.equalTo(UIScreen.main.bounds.width / 2)
-            make.height.equalTo(tempLabel.snp.width).multipliedBy(0.5)
+            make.height.equalTo(tempLabel.snp.width).multipliedBy(0.4)
         }
         cityNameLabel.snp.makeConstraints { make in
             make.bottom.equalTo(tempLabel.snp.top).inset(-8)

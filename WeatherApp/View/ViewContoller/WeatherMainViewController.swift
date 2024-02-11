@@ -96,10 +96,11 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reusableIdentifier) else {
-            
-            return UITableViewCell(style: .subtitle, reuseIdentifier: "잘못된 셀")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainHomeTableViewCell.reusableIdentifier, for: indexPath) as? MainHomeTableViewCell else {
+            print("셀 변환 실패")
+            return UITableViewCell()
         }
+        
         cell.backgroundColor = .gray
         return cell
     }
@@ -111,6 +112,9 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
         }
         homeView.currentView.settingView(city: i.cityName, temp: i.temperature, weatherInfo: i.description, maxTemp: i.maxTemp, minTemp: i.minTemp)
         return homeView.currentView
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
 }

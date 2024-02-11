@@ -23,5 +23,6 @@ class MainHomeView: BaseView {
     
     override func register() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reusableIdentifier)
+        tableView.register(MainHomeTableViewCell.self, forCellReuseIdentifier: MainHomeTableViewCell.reusableIdentifier)
     }
 }
