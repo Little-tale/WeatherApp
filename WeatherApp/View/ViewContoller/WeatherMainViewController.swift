@@ -138,11 +138,10 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
         }
         cell.backgroundColor = .brown
         return cell
+        
+        
     }
-    
-    
 }
-
 
 //#Preview{
 //    WeatherMainViewController()

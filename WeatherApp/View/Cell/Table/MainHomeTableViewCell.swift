@@ -25,7 +25,7 @@ class MainHomeTableViewCell:BaseTableCell {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).inset(12)
             make.horizontalEdges.bottom.equalToSuperview()
-            make.height.equalTo(120).priority(800)
+            make.height.equalTo(160).priority(800)
         }
     }
     
@@ -45,7 +45,7 @@ class MainHomeTableViewCell:BaseTableCell {
         
         let cellDi = cellWidth / 5
         
-        layout.itemSize = CGSize(width: cellDi , height: cellDi * 3) // 셀의 크기
+        layout.itemSize = CGSize(width: cellDi , height: cellDi * 1.8) // 셀의 크기
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.scrollDirection = .horizontal
         return layout
