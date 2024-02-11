@@ -44,31 +44,19 @@ struct DateAssistance {
     }
     // MARK: dtTxt를 시간만 돌려드립니다
     func getOnlyTime(dtText:String) -> String{
-        let date = dateFormatter.date(from: dtText)
-        
-        guard let date = date else {
+        print(dtText)
+        guard let date = dateFormatter.date(from: dtText) else {
             print("날짜 변환에 실패: getOnlyTime")
             return ""
         }
-        
-        var calendar = Calendar.current
-        if let timeZOne = TimeZone(secondsFromGMT: 0) {
-            calendar.timeZone = timeZOne
-             calendar.locale = .init(identifier: "ko_KR")
-        }
-        
-        let timeCalendar = calendar.date(from: calendar.dateComponents([.hour], from: date))
-        
-        guard let timeString = timeCalendar?.description else {
-            print("변환실패 getOnlyTime")
-            return ""
-        }
-        
-        let timeArray = timeString.components(separatedBy: " ")
-        
-        
-        
-        return timeArray[1]
+        print(date)
+        dateFormatter.dateFormat = "H시"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+        let timeString = dateFormatter.string(from: date)
+        // 재사용 위해 원상 복구
+        dateFormatter.dateFormat = weatherApiDateFormat
+        print("🐸🐸🐸🐸🐸🐸",timeString)
+        return timeString
     }
     
     // MARK: 시간 제거해서 날짜만 나오게 함

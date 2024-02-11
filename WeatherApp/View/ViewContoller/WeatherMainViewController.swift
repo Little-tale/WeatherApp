@@ -27,6 +27,7 @@ class WeatherMainViewController: UIViewController {
         didSet{
             if let test = dateIndexDictioary[0]?.first?.dtTxt  {
                 let tester = dateAssistance.getOnlyTime(dtText: test)
+                print("🙉🙉🙉🙉🙉",test)
                 print(tester)
             }
             
