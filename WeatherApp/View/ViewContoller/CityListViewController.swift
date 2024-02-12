@@ -6,11 +6,13 @@
 //
 
 import UIKit
+typealias cityInfoModels = [CityInfoModel]
+
 class CityListViewController : BaseViewController {
     let homeview = CityListHomeView()
-    var citiInfo: [CityInfoModel] = []
+    var citiInfo: cityInfoModels = []
     var getCityId: ((Int) -> Void )?
-    
+    var filterModel: cityInfoModels?
     
     override func loadView() {
         self.view = homeview
@@ -24,7 +26,7 @@ class CityListViewController : BaseViewController {
     override func delegateDataSource() {
         homeview.tableView.dataSource = self
         homeview.tableView.delegate = self
-        
+        homeview.searchBar.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,7 +61,11 @@ class CityListViewController : BaseViewController {
 
 extension CityListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        citiInfo.count
+
+        guard let filterModel = filterModel else {
+            return citiInfo.count
+        }
+        return filterModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +74,14 @@ extension CityListViewController : UITableViewDelegate, UITableViewDataSource {
             print("cell CityInfoTableViewCell 실패")
             return UITableViewCell()
         }
-       
+        if let filter = filterModel {
+            print("'asdsadasdsadadasdsadasd")
+            let cellInfo = filter[indexPath.row]
+            print("😤😤😤😤😤😤",cellInfo.name,cellInfo.country)
+            cell.cityNameLabel.text = cellInfo.name
+            cell.countryLabel.text = cellInfo.country
+            return cell
+        }
         let cellInfo = citiInfo[indexPath.row]
         cell.cityNameLabel.text = cellInfo.name
         cell.countryLabel.text = cellInfo.country
@@ -76,12 +89,36 @@ extension CityListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     // MARK: 셀 선택시 전뷰로 가면서 해당 도시 아이디 보내줌
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let filter = filterModel {
+            getCityId?( filter[indexPath.row].id)
+            dismiss(animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
         getCityId?(citiInfo[indexPath.row].id)
         print(citiInfo[indexPath.row].id)
         dismiss(animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
+}
+
+extension CityListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else {
+            homeview.endEditing(true)
+            return
+        }
+        guard searchText != "" else {
+            homeview.endEditing(true)
+            print("no you have text baby")
+            return
+        }
+        let result = SearchAssistance().findCity(for: searchText, cityModel: citiInfo)
+        filterModel = result
+        self.homeview.tableView.reloadData()
+        homeview.endEditing(true)
+    }
 }
 

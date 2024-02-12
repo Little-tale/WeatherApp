@@ -49,6 +49,7 @@
 		7BB0A7822B7A141400517D49 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7812B7A141400517D49 /* CityInfo.swift */; };
 		7BB0A7842B7A1A1C00517D49 /* CityInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */; };
 		7BB0A7862B7A2BA900517D49 /* AlertAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */; };
+		7BB0A7882B7A32C700517D49 /* SearchAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7872B7A32C700517D49 /* SearchAssistance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		7BB0A7812B7A141400517D49 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAssistance.swift; sourceTree = "<group>"; };
+		7BB0A7872B7A32C700517D49 /* SearchAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssistance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				7BB0A7512B78F4C900517D49 /*  TemperatureAssistance.swift */,
 				7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */,
 				7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */,
+				7BB0A7872B7A32C700517D49 /* SearchAssistance.swift */,
 			);
 			path = Assistance;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */,
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
 				7BB0A7842B7A1A1C00517D49 /* CityInfoTableViewCell.swift in Sources */,
+				7BB0A7882B7A32C700517D49 /* SearchAssistance.swift in Sources */,
 				7BB0A7822B7A141400517D49 /* CityInfo.swift in Sources */,
 				7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */,
 				7BB0A75E2B78FC6C00517D49 /* IntervalLabelView.swift in Sources */,

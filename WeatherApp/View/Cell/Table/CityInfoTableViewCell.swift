@@ -42,6 +42,7 @@ class CityInfoTableViewCell: BaseTableCell {
     }
     override func designView() {
         shapImage.image = UIImage(systemName: "number")
+        shapImage.tintColor = .white
         cityNameLabel.font = .systemFont(ofSize: 22, weight: .semibold)
         countryLabel.font = .systemFont(ofSize: 20, weight: .light)
         
