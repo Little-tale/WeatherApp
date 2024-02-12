@@ -21,14 +21,14 @@ enum TempAssistance {
         switch self {
         case .max(let temp):
             let after = tempCalc(temp: temp)
-            return "최고:\(after)°"
+            return "\(after)°"
             
         case .temp(let temp):
             let after = tempCalc(temp: temp)
             return "\(after)°"
         case .min(let temp):
             let after = tempCalc(temp: temp)
-            return "최저:\(after)°"
+            return "\(after)°"
         }
     
     }

@@ -30,7 +30,7 @@ struct DateAssistance {
     // 2024-02-15 12:00:00
     init(timeZone: Int) {
         dateFormatter.dateFormat = weatherApiDateFormat
-        //dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         self.timeZone = timeZone
         print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
         
@@ -52,7 +52,7 @@ struct DateAssistance {
             return ""
         }
         print(date, dtText)
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         print(timeZone,"🍒🍒🍒🍒🍒🍒")
         dateFormatter.dateFormat = "H시"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
@@ -97,7 +97,7 @@ struct DateAssistance {
         
         var dateDic = [String: [List]]()
        
-        var IndexPathRow = 0
+        // var IndexPathRow = 0
         for myDate in dateList {
             guard let dateFormat = dateFromAPI(dtTxt: myDate.dtTxt) else {
                 print("날짜 변환 실패")

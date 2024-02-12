@@ -17,7 +17,7 @@ class WeatherMainViewController: UIViewController {
         self.view = homeView
     }
     
-    var dateAssistance: DateAssistance = .init(timeZone: 0)
+    var dateAssistance: DateAssistance = .init(timeZone: 32400)
     var dateDictionry = dateDictionryForString() {
         didSet{
             dateIndexDictioary = dateAssistance.getSortedIndexList(DateDic: dateDictionry)
