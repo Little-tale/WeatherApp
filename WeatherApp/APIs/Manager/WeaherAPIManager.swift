@@ -83,12 +83,12 @@ class URLSessionManager {
             print("응답 코드로 변경이 어려움")
             return .failure(urlError.errorResponse)
         }
-        print(response)
+        // print(response)
         do {
             try errorCodeCase(caseNum: response.statusCode)
             do{
                 let decodingData = try JSONDecoder().decode(T.self, from: data)
-                print(decodingData)
+                // print(decodingData)
                 return .success(decodingData)
             } catch(let error) {
                 return .failure(error)

@@ -15,6 +15,8 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
     let tempLabel = UILabel()
     let stackView = UIStackView()
     
+    lazy var labelList = [timeLabel,tempLabel]
+    
     override func configureHierarchy() {
         // self.layoutIfNeeded()
         contentView.addSubview(stackView)
@@ -50,15 +52,27 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
     override func designView() {
         timeLabel.textAlignment = .center
         tempLabel.textAlignment = .center
-        timeLabel.text = "더dsasdas"
-        tempLabel.text = "미"
-        
-        timeLabel.backgroundColor = .red
-        tempLabel.backgroundColor = .blue
         weatherImageView.backgroundColor = .green
+        
         weatherImageView.image = UIImage(systemName: "star")
         stackView.backgroundColor = .lightGray
+        
+        labelList.forEach { label in
+            label.textColor = .white
+            label.backgroundColor = .clear
+        }
     }
+    
+    func settingImage(imageName: String) {
+        do{
+            let url = try ImageAssistance().getImageUrl(imageName: imageName)
+            weatherImageView.kf.setImage(with: url,placeholder: UIImage(systemName: "sun.max.trianglebadge.exclamationmark"))
+        } catch(let error) {
+            print(error)
+        }
+    }
+   
+    
     
 }
 

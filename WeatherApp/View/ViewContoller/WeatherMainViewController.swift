@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias dateNumDic = [Int:[List]]
+
 class WeatherMainViewController: UIViewController {
     let homeView = MainHomeView()
     var currentModel: HomeTableHeaderModel? = nil
@@ -19,21 +21,10 @@ class WeatherMainViewController: UIViewController {
     var dateDictionry = dateDictionryForString() {
         didSet{
             dateIndexDictioary = dateAssistance.getSortedIndexList(DateDic: dateDictionry)
-            
-            
         }
     }
-    var dateIndexDictioary = [Int:[List]]() {
-        didSet{
-            if let test = dateIndexDictioary[0]?.first?.dtTxt  {
-                let tester = dateAssistance.getOnlyTime(dtText: test)
-                print("🙉🙉🙉🙉🙉",test)
-                print(tester)
-            }
-            
-        }
-    }
-    
+    var dateIndexDictioary = dateNumDic()
+    var threeModel = [List]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,24 +83,62 @@ class WeatherMainViewController: UIViewController {
         // homeView.tableView.layoutIfNeeded()
     }
     
+    private func threeItems() -> [List] {
+        
+        // 키 0,1,2,3,4 .... 처럼 정렬
+        let sortedKey = dateIndexDictioary.keys.sorted()
+        // 앞에서 3개만 가져올겨
+        let threeTimes = sortedKey.prefix(3)
+        // [0, 1, 2] -> 3일치 임
+        // print(threeTimes)
+        let threeTimeItems = threeTimes.compactMap { myKey in
+            dateIndexDictioary[myKey]
+        }
+        // dump(threeTimeItems)
+        var totalItem = [List]()
+        threeTimeItems.forEach { list in
+            totalItem.append(contentsOf: list)
+        }
+        return totalItem
+    }
+    
 }
+// MARK: 테이블뷰 데이타
 extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return homeSession.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainHomeTableViewCell.reusableIdentifier, for: indexPath) as? MainHomeTableViewCell else {
-            print("셀 변환 실패")
-            return UITableViewCell()
+
+        let secction = homeSession.allCases[indexPath.row]
+        let totalItems = threeItems()
+    
+        threeModel = totalItems
+        
+        
+        
+        // print("asdasdasdasd")
+        switch secction {
+        case .threeTimeInterval:
+            print(secction)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainHomeTableViewCell.reusableIdentifier, for: indexPath) as? MainHomeTableViewCell else {
+                print("셀 변환 실패")
+                return UITableViewCell()
+            }
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            cell.topView.label.text = secction.title
+            cell.backgroundColor = .gray
+            cell.collectionView.reloadData()
+            return cell
+        case .fiveDayaInterval:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableView.reusableIdentifier) else {
+                print("asdasdasdasd")
+                return UITableViewCell() }
+            return cell
         }
-        cell.topView.label.text = homeSession.allCases[indexPath.row].title
-        cell.backgroundColor = .gray
-        
-        cell.collectionView.delegate = self
-        cell.collectionView.dataSource = self
-        
-        return cell
+        // return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -124,11 +153,13 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
         return UITableView.automaticDimension
     }
     
+    
 }
-
+// MARK: 컬렉션뷰 데이타
 extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+
+        return threeModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,6 +167,15 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
             print("컬렉션뷰 셀 에러")
             return UICollectionViewCell()
         }
+        let modelData = threeModel[indexPath.row]
+        cell.tempLabel.text = TempAssistance.temp(temp: modelData.main.temp).get
+       
+        cell.timeLabel.text =  dateAssistance.getOnlyTime(dtText: modelData.dtTxt)
+        guard let icon = modelData.weather.first?.icon else {
+            print("weatherIcon 없어")
+            return cell
+        }
+        cell.settingImage(imageName: icon)
         cell.backgroundColor = .brown
         return cell
         

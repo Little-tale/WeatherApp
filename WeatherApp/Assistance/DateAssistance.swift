@@ -44,13 +44,14 @@ struct DateAssistance {
     }
     
     // MARK: dtTxt를 시간만 돌려드립니다
+    /// H시로 변환해드립니다. (dtTxt 필요)
     func getOnlyTime(dtText:String) -> String{
-        print(dtText)
+        //print(dtText)
         guard let date = dateFormatter.date(from: dtText) else {
             print("날짜 변환에 실패: getOnlyTime")
             return ""
         }
-        print(date)
+        //print(date)
         dateFormatter.dateFormat = "H시"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         let timeString = dateFormatter.string(from: date)
@@ -88,6 +89,7 @@ struct DateAssistance {
     
     
     // MARK: 날짜별 분리
+    /// 날짜별로 분리해드립니다.
     func devideCalendar(dateList: [List]) -> resultDic2{
         // 날짜를 Key 로 value는 List 배열로
         
@@ -99,7 +101,7 @@ struct DateAssistance {
                 print("날짜 변환 실패")
                 return .failure(.cantChangeDate)
             }
-            print(dateFormat)
+            //print(dateFormat)
             guard let onlyDate = getOnlyDate(date: dateFormat) else {
                 print("시간만 제거 실패")
                 return .failure(.cantOnlyDate)
@@ -114,7 +116,7 @@ struct DateAssistance {
     
     
     //MARK: Dictionary Key를 순서대로 정렬 해드립니다.
-    // -> 키값을 Int로 변환하는 기능을 추가하겠습니다.
+    /// -> 키값을 Int로 변환하는 기능을 추가하겠습니다.
     func getSortedIndexList(DateDic: [String: [List]]) -> [Int:[List]] {
         let sortedKeys = DateDic.keys.sorted()
         print(sortedKeys)
@@ -134,7 +136,8 @@ struct DateAssistance {
     
     
     //MARK: 날짜를 요일로 변환해 드립니다.
-    func getDayOfWeek(dtText: String) {
+    //// 날짜를 요일로 변환합니다.
+    func getDayOfWeek(dtText: String) -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = weatherApiDateFormat
         dateformatter.locale = Locale(identifier: "ko")
@@ -143,10 +146,11 @@ struct DateAssistance {
         dateformatter.dateFormat = "E요일"
         guard let date = date else {
             print("날짜 변환 실패입니다.")
-            return
+            return "?요일"
         }
         let string = dateformatter.string(from: date)
-        print(string)
+        //print(string)
+        return string
     }
     
     

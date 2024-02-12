@@ -36,6 +36,8 @@
 		7BB0A7642B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7632B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift */; };
 		7BB0A7662B790D3400517D49 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7652B790D3400517D49 /* BaseCollectionViewCell.swift */; };
 		7BB0A7692B790E0A00517D49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A7682B790E0A00517D49 /* Kingfisher */; };
+		7BB0A76B2B79A55900517D49 /* IntervalDateAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76A2B79A55900517D49 /* IntervalDateAssistance.swift */; };
+		7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		7BB0A75F2B790B2200517D49 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		7BB0A7632B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesWeatherCollecionViewCell.swift; sourceTree = "<group>"; };
 		7BB0A7652B790D3400517D49 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		7BB0A76A2B79A55900517D49 /* IntervalDateAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalDateAssistance.swift; sourceTree = "<group>"; };
+		7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssistance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 			children = (
 				7BB0A7392B777E6900517D49 /* DateAssistance.swift */,
 				7BB0A7512B78F4C900517D49 /*  TemperatureAssistance.swift */,
+				7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */,
 			);
 			path = Assistance;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB0A7352B7762C200517D49 /* HomeTableHeaderModel.swift */,
+				7BB0A76A2B79A55900517D49 /* IntervalDateAssistance.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BB0A7602B790B2200517D49 /* Session.swift in Sources */,
+				7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */,
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
 				7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */,
 				7BB0A75E2B78FC6C00517D49 /* IntervalLabelView.swift in Sources */,
@@ -388,6 +395,7 @@
 				7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */,
 				7BB0A73A2B777E6900517D49 /* DateAssistance.swift in Sources */,
 				7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */,
+				7BB0A76B2B79A55900517D49 /* IntervalDateAssistance.swift in Sources */,
 				7BB0A7642B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift in Sources */,
 				7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */,
 				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
