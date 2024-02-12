@@ -38,6 +38,8 @@
 		7BB0A7692B790E0A00517D49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A7682B790E0A00517D49 /* Kingfisher */; };
 		7BB0A76B2B79A55900517D49 /* IntervalDateAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76A2B79A55900517D49 /* IntervalDateAssistance.swift */; };
 		7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */; };
+		7BB0A76F2B79C09400517D49 /* FiveDayIntervalTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */; };
+		7BB0A7712B79CD1500517D49 /* FiveInnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		7BB0A7652B790D3400517D49 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		7BB0A76A2B79A55900517D49 /* IntervalDateAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalDateAssistance.swift; sourceTree = "<group>"; };
 		7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssistance.swift; sourceTree = "<group>"; };
+		7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayIntervalTableCell.swift; sourceTree = "<group>"; };
+		7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveInnerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				7BB0A7552B78FAE800517D49 /* MainHomeTableViewCell.swift */,
+				7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */,
+				7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -392,7 +398,9 @@
 				7BB0A7502B78D80600517D49 /* Extention.swift in Sources */,
 				7BB0A7102B762B7500517D49 /* WeatherMainViewController.swift in Sources */,
 				7BB0A73F2B78BA1200517D49 /* MainHomeView.swift in Sources */,
+				7BB0A7712B79CD1500517D49 /* FiveInnerTableViewCell.swift in Sources */,
 				7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */,
+				7BB0A76F2B79C09400517D49 /* FiveDayIntervalTableCell.swift in Sources */,
 				7BB0A73A2B777E6900517D49 /* DateAssistance.swift in Sources */,
 				7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */,
 				7BB0A76B2B79A55900517D49 /* IntervalDateAssistance.swift in Sources */,

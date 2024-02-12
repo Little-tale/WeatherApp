@@ -116,8 +116,6 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     
         threeModel = totalItems
         
-        
-        
         // print("asdasdasdasd")
         switch secction {
         case .threeTimeInterval:
@@ -133,9 +131,13 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.collectionView.reloadData()
             return cell
         case .fiveDayaInterval:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableView.reusableIdentifier) else {
-                print("asdasdasdasd")
-                return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDayIntervalTableCell.reusableIdentifier) as? FiveDayIntervalTableCell else {
+                print("셀 변환실패 FiveDayIntervalTableCell")
+                return UITableViewCell()
+            }
+            cell.fiveDelegate = self
+            cell.tableView.rowHeight = UITableView.automaticDimension
+            cell.tableView.estimatedRowHeight = 250
             return cell
         }
         // return cell
@@ -182,6 +184,24 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
         
     }
 }
+
+extension WeatherMainViewController: FiveDayIntervalProtocol {
+    func FivetableView(for FiveDayIntervalTableCell: UITableViewCell, tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func FivetableView(for FiveDayIntervalTableCell: UITableViewCell, tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveInnerTableViewCell.reusableIdentifier , for: indexPath) as? FiveInnerTableViewCell else {
+            print("FiveInnerTableViewCell 변환 실패")
+            return UITableViewCell()
+        }
+        cell.dateWeekLabel.backgroundColor = .blue
+        return cell
+    }
+    
+    
+}
+
 
 //#Preview{
 //    WeatherMainViewController()

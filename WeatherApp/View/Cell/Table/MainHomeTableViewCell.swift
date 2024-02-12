@@ -33,7 +33,7 @@ class MainHomeTableViewCell:BaseTableCell {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reusableIdentifier)
         collectionView.register(TimesWeatherCollecionViewCell.self, forCellWithReuseIdentifier: TimesWeatherCollecionViewCell.reusableIdentifier)
         
-        
+
     }
     
     var configureCellLayout : UICollectionViewFlowLayout {
