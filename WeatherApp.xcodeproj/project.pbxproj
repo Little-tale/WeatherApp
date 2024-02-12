@@ -42,6 +42,12 @@
 		7BB0A7712B79CD1500517D49 /* FiveInnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */; };
 		7BB0A7742B7A03D400517D49 /* WeatherTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7732B7A03D400517D49 /* WeatherTabbarController.swift */; };
 		7BB0A7762B7A073300517D49 /* CustomTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7752B7A073300517D49 /* CustomTabbarView.swift */; };
+		7BB0A7782B7A107800517D49 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7772B7A107800517D49 /* CityListViewController.swift */; };
+		7BB0A77A2B7A109000517D49 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7792B7A109000517D49 /* BaseViewController.swift */; };
+		7BB0A77D2B7A115E00517D49 /* CityListHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A77C2B7A115E00517D49 /* CityListHomeView.swift */; };
+		7BB0A77F2B7A13AB00517D49 /* CityList1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A77E2B7A13AB00517D49 /* CityList1.json */; };
+		7BB0A7822B7A141400517D49 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7812B7A141400517D49 /* CityInfo.swift */; };
+		7BB0A7842B7A1A1C00517D49 /* CityInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +85,12 @@
 		7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveInnerTableViewCell.swift; sourceTree = "<group>"; };
 		7BB0A7732B7A03D400517D49 /* WeatherTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabbarController.swift; sourceTree = "<group>"; };
 		7BB0A7752B7A073300517D49 /* CustomTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarView.swift; sourceTree = "<group>"; };
+		7BB0A7772B7A107800517D49 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
+		7BB0A7792B7A109000517D49 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7BB0A77C2B7A115E00517D49 /* CityListHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListHomeView.swift; sourceTree = "<group>"; };
+		7BB0A77E2B7A13AB00517D49 /* CityList1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList1.json; sourceTree = "<group>"; };
+		7BB0A7812B7A141400517D49 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
+		7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +110,7 @@
 		7BB0A6FF2B762B7500517D49 = {
 			isa = PBXGroup;
 			children = (
+				7BB0A77E2B7A13AB00517D49 /* CityList1.json */,
 				7BB0A7262B76883700517D49 /* .gitignore */,
 				7BB0A70A2B762B7500517D49 /* WeatherApp */,
 				7BB0A7092B762B7500517D49 /* Products */,
@@ -157,6 +170,7 @@
 		7BB0A7232B76616900517D49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A7802B7A140A00517D49 /* JsonModel */,
 				7BB0A7342B7762B100517D49 /* ViewModel */,
 				7BB0A7312B7703AB00517D49 /* APIModel */,
 				7BB0A75F2B790B2200517D49 /* Session.swift */,
@@ -229,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB0A70F2B762B7500517D49 /* WeatherMainViewController.swift */,
+				7BB0A7772B7A107800517D49 /* CityListViewController.swift */,
 			);
 			path = ViewContoller;
 			sourceTree = "<group>";
@@ -237,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB0A73E2B78BA1200517D49 /* MainHomeView.swift */,
+				7BB0A77C2B7A115E00517D49 /* CityListHomeView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -244,6 +260,7 @@
 		7BB0A7402B78BA2500517D49 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A77B2B7A110300517D49 /* BaseViewController */,
 				7BB0A7572B78FAFE00517D49 /* BaseCell */,
 				7BB0A7412B78BA3100517D49 /* BaseView */,
 			);
@@ -298,6 +315,7 @@
 				7BB0A7552B78FAE800517D49 /* MainHomeTableViewCell.swift */,
 				7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */,
 				7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */,
+				7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -317,6 +335,22 @@
 				7BB0A7752B7A073300517D49 /* CustomTabbarView.swift */,
 			);
 			path = TabbarContoller;
+			sourceTree = "<group>";
+		};
+		7BB0A77B2B7A110300517D49 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7792B7A109000517D49 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		7BB0A7802B7A140A00517D49 /* JsonModel */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7812B7A141400517D49 /* CityInfo.swift */,
+			);
+			path = JsonModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,6 +424,7 @@
 				7BB0A7182B762B7600517D49 /* LaunchScreen.storyboard in Resources */,
 				7BB0A7152B762B7600517D49 /* Assets.xcassets in Resources */,
 				7BB0A7202B762BAB00517D49 /* memo in Resources */,
+				7BB0A77F2B7A13AB00517D49 /* CityList1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,15 +435,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB0A77A2B7A109000517D49 /* BaseViewController.swift in Sources */,
 				7BB0A7742B7A03D400517D49 /* WeatherTabbarController.swift in Sources */,
 				7BB0A7602B790B2200517D49 /* Session.swift in Sources */,
 				7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */,
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
+				7BB0A7842B7A1A1C00517D49 /* CityInfoTableViewCell.swift in Sources */,
+				7BB0A7822B7A141400517D49 /* CityInfo.swift in Sources */,
 				7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */,
 				7BB0A75E2B78FC6C00517D49 /* IntervalLabelView.swift in Sources */,
 				7BB0A72E2B76FF6B00517D49 /* WeaherAPIManager.swift in Sources */,
 				7BB0A7522B78F4C900517D49 /*  TemperatureAssistance.swift in Sources */,
 				7BB0A7592B78FB0C00517D49 /* BaseTableCell.swift in Sources */,
+				7BB0A7782B7A107800517D49 /* CityListViewController.swift in Sources */,
 				7BB0A7382B77670800517D49 /* TempAssistance.swift in Sources */,
 				7BB0A7502B78D80600517D49 /* Extention.swift in Sources */,
 				7BB0A7762B7A073300517D49 /* CustomTabbarView.swift in Sources */,
@@ -425,6 +464,7 @@
 				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
 				7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */,
 				7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */,
+				7BB0A77D2B7A115E00517D49 /* CityListHomeView.swift in Sources */,
 				7BB0A7362B7762C200517D49 /* HomeTableHeaderModel.swift in Sources */,
 				7BB0A7662B790D3400517D49 /* BaseCollectionViewCell.swift in Sources */,
 				7BB0A7562B78FAE800517D49 /* MainHomeTableViewCell.swift in Sources */,
