@@ -40,6 +40,8 @@
 		7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */; };
 		7BB0A76F2B79C09400517D49 /* FiveDayIntervalTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */; };
 		7BB0A7712B79CD1500517D49 /* FiveInnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */; };
+		7BB0A7742B7A03D400517D49 /* WeatherTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7732B7A03D400517D49 /* WeatherTabbarController.swift */; };
+		7BB0A7762B7A073300517D49 /* CustomTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7752B7A073300517D49 /* CustomTabbarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssistance.swift; sourceTree = "<group>"; };
 		7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayIntervalTableCell.swift; sourceTree = "<group>"; };
 		7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveInnerTableViewCell.swift; sourceTree = "<group>"; };
+		7BB0A7732B7A03D400517D49 /* WeatherTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabbarController.swift; sourceTree = "<group>"; };
+		7BB0A7752B7A073300517D49 /* CustomTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		7BB0A7222B76616200517D49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A7722B7A03B200517D49 /* TabbarContoller */,
 				7BB0A75A2B78FBB700517D49 /* LabelView */,
 				7BB0A7532B78FA7C00517D49 /* Cell */,
 				7BB0A7452B78BB1A00517D49 /* TabelHearderView */,
@@ -305,6 +310,15 @@
 			path = ColletionViewCell;
 			sourceTree = "<group>";
 		};
+		7BB0A7722B7A03B200517D49 /* TabbarContoller */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A7732B7A03D400517D49 /* WeatherTabbarController.swift */,
+				7BB0A7752B7A073300517D49 /* CustomTabbarView.swift */,
+			);
+			path = TabbarContoller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB0A7742B7A03D400517D49 /* WeatherTabbarController.swift in Sources */,
 				7BB0A7602B790B2200517D49 /* Session.swift in Sources */,
 				7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */,
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
@@ -396,6 +411,7 @@
 				7BB0A7592B78FB0C00517D49 /* BaseTableCell.swift in Sources */,
 				7BB0A7382B77670800517D49 /* TempAssistance.swift in Sources */,
 				7BB0A7502B78D80600517D49 /* Extention.swift in Sources */,
+				7BB0A7762B7A073300517D49 /* CustomTabbarView.swift in Sources */,
 				7BB0A7102B762B7500517D49 /* WeatherMainViewController.swift in Sources */,
 				7BB0A73F2B78BA1200517D49 /* MainHomeView.swift in Sources */,
 				7BB0A7712B79CD1500517D49 /* FiveInnerTableViewCell.swift in Sources */,

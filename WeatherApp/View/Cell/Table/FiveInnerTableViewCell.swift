@@ -22,6 +22,7 @@ class FiveInnerTableViewCell: BaseTableCell {
         contentView.addSubview(weatherImageView)
         contentView.addSubview(minTextlabel)
         contentView.addSubview(maxTextLabel)
+        self.backgroundColor = UIColor(white: 0, alpha: 1)
     }
     override func configureLayout() {
         super.configureLayout()
@@ -50,6 +51,15 @@ class FiveInnerTableViewCell: BaseTableCell {
             make.top.equalTo(weatherImageView.snp.centerY).offset(2)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
+    }
+    
+    override func designView() {
+        allLabelList.forEach { label in
+            label.textColor = .white
+            label.backgroundColor = .brown
+        }
+        contentView.backgroundColor = UIColor(white: 0, alpha: 1)
+        
     }
     
     override func settingImage(imageName: String) {

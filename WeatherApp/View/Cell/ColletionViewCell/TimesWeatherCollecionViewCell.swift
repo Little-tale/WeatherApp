@@ -52,15 +52,18 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
     override func designView() {
         timeLabel.textAlignment = .center
         tempLabel.textAlignment = .center
-        weatherImageView.backgroundColor = .green
+        weatherImageView.backgroundColor = .clear
         
         weatherImageView.image = UIImage(systemName: "star")
-        stackView.backgroundColor = .lightGray
+        stackView.backgroundColor = .clear
         
         labelList.forEach { label in
             label.textColor = .white
             label.backgroundColor = .clear
         }
+        
+        self.layer.cornerRadius = 8
+        self.backgroundColor = .darkGray
     }
     
     func settingImage(imageName: String) {

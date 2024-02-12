@@ -34,7 +34,9 @@ class FiveDayIntervalTableCell: BaseTableCell {
             make.horizontalEdges.bottom.equalToSuperview()
             make.top.equalTo(label.snp.bottom).inset(8)
         }
-        label.backgroundColor = .black
+        label.backgroundColor = .clear
+        self.backgroundColor = UIColor(white: 0, alpha: 1)
+        contentView.backgroundColor = UIColor(white: 0, alpha: 1)
     }
     
     override func register() {
@@ -44,7 +46,7 @@ class FiveDayIntervalTableCell: BaseTableCell {
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 150
-        
+        tableView.backgroundColor = UIColor(white: 0, alpha: 1)
     }
 }
 

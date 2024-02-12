@@ -28,7 +28,7 @@ class WeatherMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+    
         tableViewRegister()
         // MARK: 현재 날씨 데이터 요청
         let group = DispatchGroup()
@@ -75,7 +75,7 @@ class WeatherMainViewController: UIViewController {
         homeView.tableView.delegate = self
         homeView.tableView.dataSource = self
         homeView.tableView.rowHeight = UITableView.automaticDimension
-        homeView.tableView.estimatedRowHeight = 100
+        homeView.tableView.estimatedRowHeight = 120
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,8 +127,9 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.topView.label.text = secction.title
-            cell.backgroundColor = .gray
+            cell.backgroundColor = .clear
             cell.collectionView.reloadData()
+
             return cell
         case .fiveDayaInterval:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDayIntervalTableCell.reusableIdentifier) as? FiveDayIntervalTableCell else {
@@ -136,6 +137,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.fiveDelegate = self
+            cell.label.label.text = secction.title
             cell.tableView.reloadData()
             return cell
         }
@@ -177,7 +179,7 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
             return cell
         }
         cell.settingImage(imageName: icon)
-        cell.backgroundColor = .brown
+        // cell.backgroundColor = .brown
         return cell
         
         
@@ -195,8 +197,10 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
             print("FiveInnerTableViewCell 변환 실패")
             return UITableViewCell()
         }
-        cell.dateWeekLabel.backgroundColor = .blue
-        cell.weatherImageView.backgroundColor = .cyan
+        cell.dateWeekLabel.backgroundColor = .clear
+        cell.weatherImageView.backgroundColor = .clear
+        
+        // cell.backgroundColor = UIColor(white: 0, alpha: 1)
         
         guard let representList = dateIndexDictioary[indexPath.row] else {
             print("데이터 받기 실패 dateIndexDictioary")

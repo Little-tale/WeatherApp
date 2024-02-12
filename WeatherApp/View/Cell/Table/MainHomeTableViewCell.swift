@@ -18,8 +18,9 @@ class MainHomeTableViewCell:BaseTableCell {
     }
     override func configureLayout() {
         topView.snp.makeConstraints { make in
-            make.size.equalTo(20).priority(400)
+            // make.size.equalTo(20).priority(400)
             // make.width.equalTo(20)
+            make.height.equalTo(60)
             make.horizontalEdges.top.equalToSuperview()
         }
         collectionView.snp.makeConstraints { make in
@@ -32,8 +33,8 @@ class MainHomeTableViewCell:BaseTableCell {
     override func register(){
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reusableIdentifier)
         collectionView.register(TimesWeatherCollecionViewCell.self, forCellWithReuseIdentifier: TimesWeatherCollecionViewCell.reusableIdentifier)
-        
-
+        // 알파값 터치 위함
+        collectionView.backgroundColor = UIColor(white: 0, alpha: 1)
     }
     
     var configureCellLayout : UICollectionViewFlowLayout {
