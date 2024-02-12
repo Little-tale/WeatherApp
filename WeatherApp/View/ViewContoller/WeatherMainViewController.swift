@@ -22,7 +22,6 @@ final class WeatherMainViewController: UIViewController {
     var cityId = 1833788 {
         didSet{
             requestData()
-            // homeView.tableView.reloadData()
         }
     }
     
@@ -74,10 +73,10 @@ final class WeatherMainViewController: UIViewController {
                 case .success(let success):
                     self.dateDictionry = success
                 case .failure(let fail):
-                    print(fail)
+                    self.showAlert(error: fail)
                 }
             case .failure(let error):
-                print(error)
+                self.showAlert(error: error)
             }
             group.leave()
         }

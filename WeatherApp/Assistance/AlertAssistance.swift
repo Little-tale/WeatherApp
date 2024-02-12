@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     func showAlert(error: apiError) {
-        var alert = UIAlertController()
+        let alert = UIAlertController()
         alert.title = "통신에러"
         
         switch error{
@@ -26,4 +26,38 @@ extension UIViewController {
             alert.dismiss(animated: true)
         }
     }
+    
+    func showAlert(error: dateError) {
+        let alert = UIAlertController()
+        alert.title = "통신에러"
+        
+        switch error {
+        case .cantChangeDate:
+            alert.message = "날짜변환에 문제가 있습니다. 잠시후 재시도 바랍니다."
+        case .cantOnlyDate:
+            alert.message = "날짜변환에 문제가 있습니다. 잠시후 재시도 바랍니다."
+        }
+        present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            alert.dismiss(animated: true)
+        }
+    }
+
+//    func showAlert(error: dateError) {
+//        let alert = UIAlertController()
+//        alert.title = "통신에러"
+//        
+//        switch error {
+//        case .cantChangeDate:
+//            alert.message = "날짜변환에 문제가 있습니다. 잠시후 재시도 바랍니다."
+//        case .cantOnlyDate:
+//            alert.message = "날짜변환에 문제가 있습니다. 잠시후 재시도 바랍니다."
+//        }
+//        present(alert, animated: true)
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            alert.dismiss(animated: true)
+//        }
+//    }
 }
