@@ -136,8 +136,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.fiveDelegate = self
-            cell.tableView.rowHeight = UITableView.automaticDimension
-            cell.tableView.estimatedRowHeight = 250
+            cell.tableView.reloadData()
             return cell
         }
         // return cell
@@ -187,7 +186,8 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
 
 extension WeatherMainViewController: FiveDayIntervalProtocol {
     func FivetableView(for FiveDayIntervalTableCell: UITableViewCell, tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print("🥝🥝🥝🥝🥝🥝",dateIndexDictioary.count)
+        return dateIndexDictioary.count
     }
     
     func FivetableView(for FiveDayIntervalTableCell: UITableViewCell, tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -196,6 +196,31 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
             return UITableViewCell()
         }
         cell.dateWeekLabel.backgroundColor = .blue
+        cell.weatherImageView.backgroundColor = .cyan
+        
+        guard let representList = dateIndexDictioary[indexPath.row] else {
+            print("데이터 받기 실패 dateIndexDictioary")
+            return cell
+        }
+        
+        guard let represent = representList.first else {
+            print("대표 받기 실패")
+            return cell
+        }
+        
+        cell.settingImage(imageName: represent.weather.first?.icon ?? "")
+        
+        cell.dateWeekLabel.text = dateAssistance.getDayOfWeek(dtText: represent.dtTxt)
+        
+        let maxText = TemperatureAssistance.max(representList).getAverage
+        
+        cell.maxTextLabel.text = "최고 : " + maxText
+        
+        let minText = TemperatureAssistance.min(representList).getAverage
+        
+        cell.minTextlabel.text = "최소 : " + minText
+        
+        
         return cell
     }
     

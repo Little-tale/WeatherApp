@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 class FiveInnerTableViewCell: BaseTableCell {
     let dateWeekLabel = UILabel()
     let weatherImageView = UIImageView()
@@ -49,6 +50,16 @@ class FiveInnerTableViewCell: BaseTableCell {
             make.top.equalTo(weatherImageView.snp.centerY).offset(2)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
+    }
+    
+    override func settingImage(imageName: String) {
+        do {
+            let url = try ImageAssistance().getImageUrl(imageName: imageName)
+            weatherImageView.kf.setImage(with: url,placeholder: UIImage(systemName: "sun.max.trianglebadge.exclamationmark"))
+        } catch(let error) {
+            print(error)
+        }
+        
     }
 
 }

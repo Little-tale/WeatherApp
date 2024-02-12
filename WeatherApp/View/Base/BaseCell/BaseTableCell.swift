@@ -37,5 +37,8 @@ class BaseTableCell: UITableViewCell{
     func register(){
         
     }
+    func settingImage(imageName: String){
+        
+    }
     
 }

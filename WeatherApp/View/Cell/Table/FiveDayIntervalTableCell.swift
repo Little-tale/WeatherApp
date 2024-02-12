@@ -27,10 +27,10 @@ class FiveDayIntervalTableCell: BaseTableCell {
     override func configureLayout() {
         label.snp.makeConstraints { make in
             make.horizontalEdges.top.equalToSuperview()
-            make.height.equalTo(30)
+            make.height.equalTo(60)
         }
         tableView.snp.makeConstraints { make in
-            make.height.equalTo(240)
+            make.height.equalTo(240).priority(600)
             make.horizontalEdges.bottom.equalToSuperview()
             make.top.equalTo(label.snp.bottom).inset(8)
         }

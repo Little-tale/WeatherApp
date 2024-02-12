@@ -13,6 +13,7 @@ enum TempAssistance {
     case temp(temp:Double)
     case min(temp: Double)
     
+    
     // MARK: 각 케이스마다 해당하는 글자를 맞추어 줍니다.
     /// 각 케이스 마다 해당하는 글자를 맞추어 줄께요
     var get : String {

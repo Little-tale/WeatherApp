@@ -23,8 +23,8 @@ struct HomeTableHeaderModel {
         self.cityName = model.cityName
         self.temperature = TempAssistance.temp(temp: model.main.temp).get
         self.description = model.weather.first?.description ?? "뭔가 잘못됨 확인해"
-        self.maxTemp = TempAssistance.max(temp: model.main.tempMax).get
-        self.minTemp = TempAssistance.min(temp: model.main.tempMin).get
+        self.maxTemp = "최고 :" + TempAssistance.max(temp: model.main.tempMax).get
+        self.minTemp = "최소:" + TempAssistance.min(temp: model.main.tempMin).get
     }
 }
 

@@ -30,7 +30,7 @@ struct DateAssistance {
     // 2024-02-15 12:00:00
     init(timeZone: Int) {
         dateFormatter.dateFormat = weatherApiDateFormat
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+        //dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         self.timeZone = timeZone
         print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
         
@@ -46,12 +46,14 @@ struct DateAssistance {
     // MARK: dtTxt를 시간만 돌려드립니다
     /// H시로 변환해드립니다. (dtTxt 필요)
     func getOnlyTime(dtText:String) -> String{
-        //print(dtText)
+        // print(dtText)
         guard let date = dateFormatter.date(from: dtText) else {
             print("날짜 변환에 실패: getOnlyTime")
             return ""
         }
-        //print(date)
+        print(date, dtText)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        print(timeZone,"🍒🍒🍒🍒🍒🍒")
         dateFormatter.dateFormat = "H시"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         let timeString = dateFormatter.string(from: date)
@@ -66,10 +68,10 @@ struct DateAssistance {
     private func getOnlyDate(date: Date) -> String? {
         var calendar = Calendar.current
         // 이유는 모르겠으나 0으로 주니 00:00:00 으로 잘 변환된다
-        if let timeZOne = TimeZone(secondsFromGMT: 0) {
-            calendar.timeZone = timeZOne
-             calendar.locale = .init(identifier: "ko_KR")
-        }
+//        if let timeZOne = TimeZone(secondsFromGMT: 0) {
+//            calendar.timeZone = timeZOne
+//             calendar.locale = .init(identifier: "ko_KR")
+//        }
         // 2024-02-14 18:00:00
         // 켈린더Date를 생성하는데 DateComponents 객체를 받아 Date를 추출합니다.
         // DateComponents는 각 년,월,일 만 추출합니다. -> 00:00:00 이 기댓값
@@ -138,6 +140,7 @@ struct DateAssistance {
     //MARK: 날짜를 요일로 변환해 드립니다.
     //// 날짜를 요일로 변환합니다.
     func getDayOfWeek(dtText: String) -> String {
+        print(dtText)
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = weatherApiDateFormat
         dateformatter.locale = Locale(identifier: "ko")

@@ -19,26 +19,26 @@ enum TemperatureAssistance {
             minAverage(list: list)
         }
     }
-    
+    // MARK: 가장 큰놈을 골라드립니다.
+    /// [List]-> List<tempMax> -> maxinm
     private func maxAverage(list: [List]) -> String{
-        var total = 0.0
-        for item in list{
-            total += item.main.tempMax
+        var numList:[Double] = []
+        for datas in list {
+            numList.append(datas.main.tempMax - 273.15)
         }
-        // 예상값 : 3.3132314123
-        let average = total / Double(list.count)
-        let round =  average.rounded()
-        return String(round)
+        let max = numList.max() ?? 0
+       
+        return String( max.rounded()) + "°"
     }
+    // MARK: 가장 작은놈을 골랃립니다.
     private func minAverage(list: [List]) -> String{
-        var total = 0.0
-        for item in list{
-            total += item.main.tempMin
+        var numList:[Double] = []
+        for datas in list {
+            numList.append(datas.main.tempMin - 273.15)
         }
-        // 예상값 : 3.3132314123
-        let average = total / Double(list.count)
-        let round =  average.rounded()
-        return String(round)
+        let min = numList.min() ?? 0
+       
+        return String( min.rounded()) + "°"
     }
     
    
