@@ -16,6 +16,12 @@ class WeatherMainViewController: UIViewController {
     override func loadView() {
         self.view = homeView
     }
+    var cityId = 1833788 {
+        didSet{
+            requestData()
+            // homeView.tableView.reloadData()
+        }
+    }
     
     var dateAssistance: DateAssistance = .init(timeZone: 32400)
     var dateDictionry = dateDictionryForString() {
@@ -30,10 +36,18 @@ class WeatherMainViewController: UIViewController {
         super.viewDidLoad()
     
         tableViewRegister()
+        requestData()
+        
+        homeView.tabview.listButton.addTarget(self, action: #selector(goListView), for: .touchUpInside)
+    }
+    
+    
+    private func requestData(){
         // MARK: 현재 날씨 데이터 요청
         let group = DispatchGroup()
+        
         group.enter()
-        URLSessionManager.shared.fetch(type: WeatherAPIcurrentModel.self, api: WeatherApi.currentCity(id: 1833788)) { result in
+        URLSessionManager.shared.fetch(type: WeatherAPIcurrentModel.self, api: WeatherApi.currentCity(id: cityId)) { result in
             switch result{
             case .success(let model):
                 // print(model)
@@ -42,13 +56,14 @@ class WeatherMainViewController: UIViewController {
                 self.dateAssistance = DateAssistance(timeZone: model.timezone)
                 
             case .failure(let errors):
-                print(errors)
+                self.showAlert(error: errors)
             }
             group.leave()
         }
+        
         group.enter()
         // MARK: 주간 날씨 데이터 요청
-        URLSessionManager.shared.fetch(type: WeatherAPIForecastModel.self, api: WeatherApi.foreCaseCity(id: 1833788)) { result in
+        URLSessionManager.shared.fetch(type: WeatherAPIForecastModel.self, api: WeatherApi.foreCaseCity(id: cityId)) { result in
             switch result{
             case .success(let success):
                 let divideDate = self.dateAssistance.devideCalendar(dateList: success.list)
@@ -65,11 +80,24 @@ class WeatherMainViewController: UIViewController {
         }
         
         group.notify(queue: .main) {
+            print("🍌🍌🍌🍌🍌🍌🍌🍌")
             self.homeView.tableView.reloadData()
         }
-        
-        
     }
+    
+    // MARK: 다음뷰로 가서 값을 가져옵니다.
+    @objc
+    func goListView(){
+        let vc = CityListViewController()
+        vc.getCityId = {
+            cityId in
+            self.cityId = cityId
+        }
+        present(vc, animated: true)
+    }
+    
+    
+    
     // MARK: 테이블뷰 딜리게이트 데이타 소스 + 오토레이아웃
     func tableViewRegister(){
         homeView.tableView.delegate = self
@@ -231,6 +259,9 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
     
 }
 
+extension WeatherMainViewController {
+    
+}
 
 //#Preview{
 //    WeatherMainViewController()

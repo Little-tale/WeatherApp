@@ -13,19 +13,21 @@ class MainHomeView: BaseView {
     let tableView = UITableView()
     let tabview = CustomTabbarView()
     override func configureHierarchy() {
+        self.addSubview(tabview)
         self.addSubview(tableView)
         self.backgroundColor = .clear
         tableView.backgroundColor = .clear
         // currentView.backgroundColor = UIColor(white: 0, alpha: 1)
-        self.addSubview(tabview)
+        
     }
     override func configureLayout() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
-        }
         tabview.snp.makeConstraints { make in
             make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(54)
+        }
+        tableView.snp.makeConstraints { make in
+            make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide)
+            make.bottom.equalTo(tabview.snp.top)
         }
     }
     

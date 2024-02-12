@@ -7,7 +7,8 @@
 
 import Foundation
 
-typealias apiModel<T:Decodable> = Result<T,Error>
+typealias apiModel<T:Decodable> = Result<T,APIComponentsError>
+typealias apiTester<T:Decodable> = Result<T,URLError>
 typealias apiComponents = Result<URLRequest, Error>
 typealias apiError = APIComponentsError
 typealias urlError = URLError
@@ -28,16 +29,18 @@ class URLSessionManager {
                     case .success(let success):
                         completionHandler(.success(success))
                     case .failure(let failure):
-                        completionHandler(.failure(failure))
+                        completionHandler(.failure(.componentsToUrlFail))
                     }
                 }
             }.resume()
+        //MARK: 주의
         case .failure(let error):
             DispatchQueue.main.async {
-                completionHandler(.failure(error))
+                completionHandler(.failure(.noQuery))
             }
         }
     }
+    
     
     //MARK: urlComponents 를 만들어 주거나 에러를 던져줍니다.
     private func makeURLComponents(api: UrlSession) -> apiComponents{
@@ -64,7 +67,7 @@ class URLSessionManager {
     }
     
     //MARK: URL 각종에러를 테스트하고 성공시 디코딩된 모델 실패시 Error를 줍니다.
-    private func DecodingTester<T: Decodable>(type: T.Type,data: Data?, response: URLResponse?, error: Error?) -> apiModel<T> {
+    private func DecodingTester<T: Decodable>(type: T.Type,data: Data?, response: URLResponse?, error: Error?) -> apiTester<T> {
         
         guard error == nil else {
             print("Url Request 시 에러가 존재")
@@ -91,11 +94,11 @@ class URLSessionManager {
                 // print(decodingData)
                 return .success(decodingData)
             } catch(let error) {
-                return .failure(error)
+                return .failure(.errorDecoding)
             }
             
         } catch(let error) {
-            return .failure(error)
+            return .failure(.errorDecoding)
         }
         
     }

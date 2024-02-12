@@ -48,6 +48,7 @@
 		7BB0A77F2B7A13AB00517D49 /* CityList1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0A77E2B7A13AB00517D49 /* CityList1.json */; };
 		7BB0A7822B7A141400517D49 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7812B7A141400517D49 /* CityInfo.swift */; };
 		7BB0A7842B7A1A1C00517D49 /* CityInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */; };
+		7BB0A7862B7A2BA900517D49 /* AlertAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		7BB0A77E2B7A13AB00517D49 /* CityList1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList1.json; sourceTree = "<group>"; };
 		7BB0A7812B7A141400517D49 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfoTableViewCell.swift; sourceTree = "<group>"; };
+		7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAssistance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				7BB0A7392B777E6900517D49 /* DateAssistance.swift */,
 				7BB0A7512B78F4C900517D49 /*  TemperatureAssistance.swift */,
 				7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */,
+				7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */,
 			);
 			path = Assistance;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				7BB0A76B2B79A55900517D49 /* IntervalDateAssistance.swift in Sources */,
 				7BB0A7642B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift in Sources */,
 				7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */,
+				7BB0A7862B7A2BA900517D49 /* AlertAssistance.swift in Sources */,
 				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
 				7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */,
 				7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */,

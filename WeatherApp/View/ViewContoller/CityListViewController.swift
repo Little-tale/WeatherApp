@@ -9,13 +9,16 @@ import UIKit
 class CityListViewController : BaseViewController {
     let homeview = CityListHomeView()
     var citiInfo: [CityInfoModel] = []
+    var getCityId: ((Int) -> Void )?
+    
     
     override func loadView() {
         self.view = homeview
     }
-    override func designView() {
-        jsonDataLoad()
-        
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
     }
     
     override func delegateDataSource() {
@@ -23,7 +26,10 @@ class CityListViewController : BaseViewController {
         homeview.tableView.delegate = self
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        jsonDataLoad()
+    }
     ///https://jiseobkim.github.io/swift/network/2021/05/16/swift-JSON-%ED%8C%8C%EC%9D%BC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.html
     private func jsonDataLoad(){
         let fileName: String = "CityList1"
@@ -47,7 +53,7 @@ class CityListViewController : BaseViewController {
             print("일단 에러처리는 나중이지만 json데이터 에러2")
         }
         
-        print(citiInfo)
+        print("🍟🍟🍟🍟🍟🍟🍟")
     }
 }
 
@@ -62,7 +68,7 @@ extension CityListViewController : UITableViewDelegate, UITableViewDataSource {
             print("cell CityInfoTableViewCell 실패")
             return UITableViewCell()
         }
-        
+       
         let cellInfo = citiInfo[indexPath.row]
         cell.cityNameLabel.text = cellInfo.name
         cell.countryLabel.text = cellInfo.country
@@ -70,8 +76,9 @@ extension CityListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     // MARK: 셀 선택시 전뷰로 가면서 해당 도시 아이디 보내줌
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+        getCityId?(citiInfo[indexPath.row].id)
+        print(citiInfo[indexPath.row].id)
+        dismiss(animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
