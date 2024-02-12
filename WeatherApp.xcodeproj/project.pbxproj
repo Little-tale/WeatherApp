@@ -50,6 +50,10 @@
 		7BB0A7842B7A1A1C00517D49 /* CityInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */; };
 		7BB0A7862B7A2BA900517D49 /* AlertAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */; };
 		7BB0A7882B7A32C700517D49 /* SearchAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7872B7A32C700517D49 /* SearchAssistance.swift */; };
+		7BB0A78A2B7A46E100517D49 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7892B7A46E100517D49 /* MapViewController.swift */; };
+		7BB0A78C2B7A470F00517D49 /* MapViewhomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A78B2B7A470F00517D49 /* MapViewhomeView.swift */; };
+		7BB0A78E2B7A514B00517D49 /* locationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A78D2B7A514B00517D49 /* locationTableCell.swift */; };
+		7BB0A7912B7A523500517D49 /* InfoBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7902B7A523500517D49 /* InfoBoxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +99,10 @@
 		7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7BB0A7852B7A2BA900517D49 /* AlertAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAssistance.swift; sourceTree = "<group>"; };
 		7BB0A7872B7A32C700517D49 /* SearchAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssistance.swift; sourceTree = "<group>"; };
+		7BB0A7892B7A46E100517D49 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7BB0A78B2B7A470F00517D49 /* MapViewhomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewhomeView.swift; sourceTree = "<group>"; };
+		7BB0A78D2B7A514B00517D49 /* locationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationTableCell.swift; sourceTree = "<group>"; };
+		7BB0A7902B7A523500517D49 /* InfoBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBoxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,8 +168,8 @@
 		7BB0A7222B76616200517D49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A78F2B7A521700517D49 /* CustomViews */,
 				7BB0A7722B7A03B200517D49 /* TabbarContoller */,
-				7BB0A75A2B78FBB700517D49 /* LabelView */,
 				7BB0A7532B78FA7C00517D49 /* Cell */,
 				7BB0A7452B78BB1A00517D49 /* TabelHearderView */,
 				7BB0A7402B78BA2500517D49 /* Base */,
@@ -250,6 +258,7 @@
 			children = (
 				7BB0A70F2B762B7500517D49 /* WeatherMainViewController.swift */,
 				7BB0A7772B7A107800517D49 /* CityListViewController.swift */,
+				7BB0A7892B7A46E100517D49 /* MapViewController.swift */,
 			);
 			path = ViewContoller;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			children = (
 				7BB0A73E2B78BA1200517D49 /* MainHomeView.swift */,
 				7BB0A77C2B7A115E00517D49 /* CityListHomeView.swift */,
+				7BB0A78B2B7A470F00517D49 /* MapViewhomeView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -322,6 +332,7 @@
 				7BB0A76E2B79C09400517D49 /* FiveDayIntervalTableCell.swift */,
 				7BB0A7702B79CD1500517D49 /* FiveInnerTableViewCell.swift */,
 				7BB0A7832B7A1A1C00517D49 /* CityInfoTableViewCell.swift */,
+				7BB0A78D2B7A514B00517D49 /* locationTableCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -357,6 +368,15 @@
 				7BB0A7812B7A141400517D49 /* CityInfo.swift */,
 			);
 			path = JsonModel;
+			sourceTree = "<group>";
+		};
+		7BB0A78F2B7A521700517D49 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0A75A2B78FBB700517D49 /* LabelView */,
+				7BB0A7902B7A523500517D49 /* InfoBoxView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +463,7 @@
 			files = (
 				7BB0A77A2B7A109000517D49 /* BaseViewController.swift in Sources */,
 				7BB0A7742B7A03D400517D49 /* WeatherTabbarController.swift in Sources */,
+				7BB0A7912B7A523500517D49 /* InfoBoxView.swift in Sources */,
 				7BB0A7602B790B2200517D49 /* Session.swift in Sources */,
 				7BB0A76D2B79B8D400517D49 /* ImageAssistance.swift in Sources */,
 				7BB0A7332B7703B900517D49 /* APIModel.swift in Sources */,
@@ -456,6 +477,7 @@
 				7BB0A7592B78FB0C00517D49 /* BaseTableCell.swift in Sources */,
 				7BB0A7782B7A107800517D49 /* CityListViewController.swift in Sources */,
 				7BB0A7382B77670800517D49 /* TempAssistance.swift in Sources */,
+				7BB0A78E2B7A514B00517D49 /* locationTableCell.swift in Sources */,
 				7BB0A7502B78D80600517D49 /* Extention.swift in Sources */,
 				7BB0A7762B7A073300517D49 /* CustomTabbarView.swift in Sources */,
 				7BB0A7102B762B7500517D49 /* WeatherMainViewController.swift in Sources */,
@@ -466,12 +488,14 @@
 				7BB0A73A2B777E6900517D49 /* DateAssistance.swift in Sources */,
 				7BB0A72A2B76887300517D49 /* APIKey.swift in Sources */,
 				7BB0A76B2B79A55900517D49 /* IntervalDateAssistance.swift in Sources */,
+				7BB0A78C2B7A470F00517D49 /* MapViewhomeView.swift in Sources */,
 				7BB0A7642B790D1E00517D49 /* TimesWeatherCollecionViewCell.swift in Sources */,
 				7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */,
 				7BB0A7862B7A2BA900517D49 /* AlertAssistance.swift in Sources */,
 				7BB0A72C2B76F18900517D49 /* WeatherAPI.swift in Sources */,
 				7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */,
 				7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */,
+				7BB0A78A2B7A46E100517D49 /* MapViewController.swift in Sources */,
 				7BB0A77D2B7A115E00517D49 /* CityListHomeView.swift in Sources */,
 				7BB0A7362B7762C200517D49 /* HomeTableHeaderModel.swift in Sources */,
 				7BB0A7662B790D3400517D49 /* BaseCollectionViewCell.swift in Sources */,

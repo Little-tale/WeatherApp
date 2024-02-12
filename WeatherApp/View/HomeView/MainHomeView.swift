@@ -35,5 +35,6 @@ class MainHomeView: BaseView {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reusableIdentifier)
         tableView.register(MainHomeTableViewCell.self, forCellReuseIdentifier: MainHomeTableViewCell.reusableIdentifier)
         tableView.register(FiveDayIntervalTableCell.self, forCellReuseIdentifier: FiveDayIntervalTableCell.reusableIdentifier)
+        tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.reusableIdentifier)
     }
 }

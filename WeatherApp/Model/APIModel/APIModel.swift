@@ -105,10 +105,10 @@ struct WeatherAPIcurrentModel: Decodable, WeatherInfomation{
     let coord: Coord // V
     let weather: [Weather] // V
     //let base: String -> 계속 station만 나오는데 설명에도 매게변수라고 되있고 이게 뭘까
-    let main: Main //
+    let main: Main // 기압이 여깅 있구요. 습도도 여기
     let visibility: Int
     let wind: Wind
-   
+    let clouds: Clouds
     let dt: Int // 데이터 계산 시간이라는데 이것도 해보
     let sys: Sys
     let timezone, id: Int // 초단위로 이동한다는데 써봐야 뭔질 알것같음
@@ -128,6 +128,7 @@ struct WeatherAPIcurrentModel: Decodable, WeatherInfomation{
         case id
         case cityName = "name"
         case cod
+        case clouds
         // case timezone_offset
     }
     
@@ -168,11 +169,12 @@ struct Coord: Decodable { //
 // MARK: - Main
 struct Main: Decodable {
     let temp, tempMin, tempMax: Double
-
+    let humidity, pressure : Int
     enum CodingKeys: String, CodingKey {
         case temp
         case tempMin = "temp_min"
         case tempMax = "temp_max"
+        case humidity, pressure
     }
 }
 

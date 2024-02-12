@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import CoreLocation
 
 typealias dateNumDic = [Int:[List]]
 
-class WeatherMainViewController: UIViewController {
+final class WeatherMainViewController: UIViewController {
+    let locationManager = CLLocationManager()
     let homeView = MainHomeView()
     var currentModel: HomeTableHeaderModel? = nil
     
     override func loadView() {
         self.view = homeView
+        checkDeviceLocationAuthorization()
     }
     var cityId = 1833788 {
         didSet{
@@ -159,6 +162,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.collectionView.reloadData()
 
             return cell
+            
         case .fiveDayaInterval:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDayIntervalTableCell.reusableIdentifier) as? FiveDayIntervalTableCell else {
                 print("셀 변환실패 FiveDayIntervalTableCell")
@@ -167,6 +171,29 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.fiveDelegate = self
             cell.label.label.text = secction.title
             cell.tableView.reloadData()
+            return cell
+            
+        case .location:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.reusableIdentifier, for: indexPath) as? LocationTableViewCell else {
+                print("셀 변환실패 LocationTableViewCell")
+                return UITableViewCell()
+            }
+            cell.header.label.text = secction.title
+            cell.header.imageView.image = UIImage(systemName: "location.fill")
+            guard let current = currentModel?.coord else {
+                print("데이터를 불러오지 못했습니다 currentModel -> coord")
+                return cell
+            }
+            cell.settingLocattion(lat: current.lat, lon: current.lon)
+            guard let currentData = currentModel else {
+                print("데이터를 불러오지 못했습니다 currentModel -> currentData")
+                return cell
+            }
+            cell.updateInfoBoxView(cell.WindBoxView, title: "바람속도", info: currentData.wind, detail: currentData.gust)
+            cell.updateInfoBoxView(cell.cloudBoxView, title: "구름", info: currentData.clouds, detail: nil)
+            cell.updateInfoBoxView(cell.giappBoxView, title: "기압", info: currentData.giap, detail: nil)
+            cell.updateInfoBoxView(cell.supdoBoxView, title: "습도", info: currentData.supdo, detail: nil)
+            //cell.settingInfoBoxView(title: <#T##String#>, info: <#T##String#>, detail: <#T##String?#>)
             return cell
         }
         // return cell

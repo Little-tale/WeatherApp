@@ -31,7 +31,7 @@ class IntervalLabelView: BaseView {
             
             make.size.equalTo(20)
             make.centerY.equalToSuperview()
-            make.verticalEdges.equalTo(self.safeAreaLayoutGuide).inset(8).priority(900)
+            make.verticalEdges.greaterThanOrEqualTo(self.safeAreaLayoutGuide).inset(8).priority(900)
         }
         label.snp.makeConstraints { make in
             make.leading.equalTo(imageView.snp.trailing).inset( -8 )
@@ -41,7 +41,7 @@ class IntervalLabelView: BaseView {
     }
     func settingLabel(time: Int) {
         let stringNum = String(time)
-        
+        imageView.contentMode = .scaleAspectFill
         label.text = stringNum+"시간 간격의 일기예보"
     }
 }

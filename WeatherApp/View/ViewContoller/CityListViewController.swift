@@ -8,7 +8,7 @@
 import UIKit
 typealias cityInfoModels = [CityInfoModel]
 
-class CityListViewController : BaseViewController {
+final class CityListViewController : BaseViewController {
     let homeview = CityListHomeView()
     var citiInfo: cityInfoModels = []
     var getCityId: ((Int) -> Void )?
