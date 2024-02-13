@@ -30,7 +30,10 @@ class MainHomeView: BaseView {
             make.bottom.equalTo(tabview.snp.top)
         }
     }
-    
+    override func designView() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 400
+    }
     override func register() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reusableIdentifier)
         tableView.register(MainHomeTableViewCell.self, forCellReuseIdentifier: MainHomeTableViewCell.reusableIdentifier)

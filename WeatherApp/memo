@@ -52,3 +52,10 @@ ForeCase 같은 경우엔는 전체 개수랑 cod?
  겨우 통신은 성공.... 이제 모델을 유연하게 구성할 준비
 3. 위치 권한 가져오는거 하고
 4.
+
+
+
+Missing MeshRenderables for ground mesh layer for (1/1) of ground tiles. Tile debug info: (Key: 13.6.4.255 t:33 kt:0, Has mesh errors: 0, MeshInstance count: 1, PendingMaterial count: 1, Invisible MeshInstances count: 0)
+
+-> Mapkit 프레임 워크 이슈 -> 지역 범위가 너무 커서 모든 메시 데이터를 로드할 만큼의 메모리가 없다는 의미로 봄.
+-> 더알아보니 Xcode 업데이트 안하면 생길수 있는 이슈라는 말도 있음

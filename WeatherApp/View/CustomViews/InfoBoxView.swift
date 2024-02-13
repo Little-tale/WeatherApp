@@ -27,7 +27,7 @@ class InfoBoxView: BaseView {
             make.size.equalTo(24)
         }
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).inset(8)
+            make.leading.equalTo(imageView.snp.trailing).offset(8)
             make.top.equalTo(imageView.snp.top)
             make.trailing.equalTo(self.safeAreaLayoutGuide).inset(8)
             make.height.equalTo(24)
