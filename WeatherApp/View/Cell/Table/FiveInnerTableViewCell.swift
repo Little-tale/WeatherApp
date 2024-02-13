@@ -69,7 +69,12 @@ class FiveInnerTableViewCell: BaseTableCell {
         } catch(let error) {
             print(error)
         }
-        
+    }
+    
+    func settingLabelsText(dateWeek: String, maxText: String, minText: String){
+        dateWeekLabel.text = dateWeek
+        maxTextLabel.text = "최고 : " + maxText
+        minTextlabel.text = "최소 : " + minText
     }
 
 }

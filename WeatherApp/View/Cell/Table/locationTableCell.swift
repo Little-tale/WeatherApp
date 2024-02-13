@@ -9,41 +9,54 @@ import UIKit
 import MapKit
 import SnapKit
 
-//enum modelToSession{
-//    case wind(HomeTableHeaderModel)
-//    case cloud(HomeTableHeaderModel)
-//    case giapp(HomeTableHeaderModel)
-//    case supdo(HomeTableHeaderModel)
-//    
-//    func updateBoxView(boxView: InfoBoxView) {
-//        let title: String
-//        let info: String
-//        let detail: String?
-//        
-//        switch self {
-//        case .wind(let model):
-//            title = "바람속도"
-//            info = model.wind
-//            detail = model.gust
-//        case .cloud(let model):
-//            title = "구름"
-//            info = model.clouds
-//            detail = ""
-//        case .giapp(let model):
-//            title = "기압"
-//            info = model.giap
-//            detail = ""
-//        case .supdo(let model):
-//            title = "습도"
-//            info = model.supdo
-//            detail = ""
-//        }
-//        boxView.titleLabel.text = title
-//        boxView.infoLabel.text = info
-//        boxView.detailLabel.text = detail
-//    }
+
+// MARK: 재도전
+//enum modelToSession {
+//    case Wind(WeatherHomeViewModel)
 //}
 
+//// MARK: 재재 도전
+//enum modelToSession {
+//    case wind(InfoBoxView)
+//    case cloud(InfoBoxView)
+//    case giap(InfoBoxView)
+//    case supdo(InfoBoxView)
+//}
+
+enum modelToSession{
+    case wind(WeatherHomeViewModel)
+    case cloud(WeatherHomeViewModel)
+    case giapp(WeatherHomeViewModel)
+    case supdo(WeatherHomeViewModel)
+
+    func updateBoxView(boxView: InfoBoxView) {
+        let title: String
+        let info: String
+        let detail: String?
+
+        switch self {
+        case .wind(let model):
+            title = "바람속도"
+            info = model.wind
+            detail = model.gust
+        case .cloud(let model):
+            title = "구름"
+            info = model.clouds
+            detail = ""
+        case .giapp(let model):
+            title = "기압"
+            info = model.giap
+            detail = ""
+        case .supdo(let model):
+            title = "습도"
+            info = model.supdo
+            detail = ""
+        }
+        boxView.titleLabel.text = title
+        boxView.infoLabel.text = info
+        boxView.detailLabel.text = detail
+    }
+}
 
 class LocationTableViewCell: BaseTableCell {
     let header = IntervalLabelView()
@@ -156,15 +169,21 @@ class LocationTableViewCell: BaseTableCell {
         mapView.addAnnotation(annotation)
     }
     
-  
-    
-    func updateInfoBoxView(_ boxView: InfoBoxView, title: String, info: String, detail: String?) {
-        boxView.titleLabel.text = title
-        boxView.infoLabel.text = info
-        boxView.detailLabel.text = detail ?? ""
-        
-    }
 
+    // MARK: 모델을 받아서 여기서 처리해주자.
+    func setModelData(model: WeatherHomeViewModel) {
+        modelToSession.cloud(model).updateBoxView(boxView: self.cloudBoxView)
+        modelToSession.giapp(model).updateBoxView(boxView: self.giappBoxView)
+        modelToSession.supdo(model).updateBoxView(boxView: self.supdoBoxView)
+        modelToSession.wind(model).updateBoxView(boxView: self.WindBoxView)
+    }
+    
+    
+    
+    
+    
+    
+    
 //    // MARK: 업데이트 로직 개서
 //    func updated(model: [modelToSession]){
 //        let infoBoxs = [WindBoxView,giappBoxView,cloudBoxView,supdoBoxView]

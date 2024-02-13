@@ -72,7 +72,7 @@ final class WeatherMainViewController: UIViewController {
         
         group.enter()
         // MARK: 주간 날씨 데이터 요청
-        URLSessionManager.shared.fetch(type: WeatherAPIForecastModel.self, api: WeatherApi.foreCaseCity(id: cityId)) { result in
+        URLSessionManager.shared.fetch(type: AllInOneModel.self, api: WeatherApi.foreCaseCity(id: cityId)) { result in
             switch result{
             case .success(let success):
                 let divideDate = self.dateAssistance.devideCalendar(dateList: success.list)
@@ -103,12 +103,7 @@ final class WeatherMainViewController: UIViewController {
             self.homeView.tableView.reloadData()
         }
         
-        // MARK: 통합모델 테스트 구역
-        // 통신 테스트 1차 통과 -> currentCity 안되는중
-        // 2차 통과 알고보니 날짜를 나눌 필요가 없었음. 그래서 날짜를 나누는 메서드에서 터진거였음
-        // 3차 데이터 확인 통과
-        // 4차 데이터 통과
-       
+      
         
         
     }
@@ -222,12 +217,8 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 print("데이터를 불러오지 못했습니다 currentModel -> currentData")
                 return cell
             }
-            cell.updateInfoBoxView(cell.WindBoxView, title: "바람속도", info: currentData.wind, detail: currentData.gust)
-            cell.updateInfoBoxView(cell.cloudBoxView, title: "구름", info: currentData.clouds, detail: nil)
-            cell.updateInfoBoxView(cell.giappBoxView, title: "기압", info: currentData.giap, detail: nil)
-            cell.updateInfoBoxView(cell.supdoBoxView, title: "습도", info: currentData.supdo, detail: nil)
-            //cell.settingInfoBoxView(title: <#T##String#>, info: <#T##String#>, detail: <#T##String?#>)
             
+            cell.setModelData(model: currentData)
             return cell
         }
         // return cell
@@ -238,12 +229,15 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             print("모델이 없음.")
             return UIView()
         }
-        homeView.currentView.settingView(city: model.cityName, temp: model.temperature, weatherInfo: model.description, maxTemp: model.maxTemp, minTemp: model.minTemp)
-        return homeView.currentView
+        let currentView = CurrentWeatherHeaderView()
+        currentView.settingView(city: model.cityName, temp: model.temperature, weatherInfo: model.description, maxTemp: model.maxTemp, minTemp: model.minTemp)
+        return currentView
     }
+    // MARK: 테이블뷰셀 크기
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    // MARK: 헤더뷰 크기
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // 헤더뷰 동적계산 포기 없어졌다 생기는 과정에서 자동적일떄 24 여야 한다와 내부 적으론 더 커야 한다가 충돌됨
         return 240
@@ -264,17 +258,10 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
         }
         
         let modelData = threeItems()[indexPath.row]
-        cell.tempLabel.text = TempAssistance.temp(temp: modelData.main.temp).get
-       
-        cell.timeLabel.text =  dateAssistance.getOnlyTime(dtText: modelData.dtTxt)
-        guard let icon = modelData.weather.first?.icon else {
-            print("weatherIcon 없어")
-            return cell
-        }
-        cell.settingImage(imageName: icon)
-        // cell.backgroundColor = .brown
+
+        cell.settingCellElements(list: modelData, dateAssi: dateAssistance, image: modelData.weather.first?.icon)
+    
         return cell
-        
         
     }
 }
@@ -290,10 +277,6 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
             print("FiveInnerTableViewCell 변환 실패")
             return UITableViewCell()
         }
-        cell.dateWeekLabel.backgroundColor = .clear
-        cell.weatherImageView.backgroundColor = .clear
-        
-        // cell.backgroundColor = UIColor(white: 0, alpha: 1)
         
         guard let representList = dateIndexDictioary[indexPath.row] else {
             print("데이터 받기 실패 dateIndexDictioary")
@@ -307,16 +290,13 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
         
         cell.settingImage(imageName: represent.weather.first?.icon ?? "")
         
-        cell.dateWeekLabel.text = dateAssistance.getDayOfWeek(dtText: represent.dtTxt)
+        let dateWeekText = dateAssistance.getDayOfWeek(dtText: represent.dtTxt)
         
         let maxText = TemperatureAssistance.max(representList).getAverage
         
-        cell.maxTextLabel.text = "최고 : " + maxText
-        
         let minText = TemperatureAssistance.min(representList).getAverage
-        
-        cell.minTextlabel.text = "최소 : " + minText
-        
+
+        cell.settingLabelsText(dateWeek: dateWeekText, maxText: maxText, minText: minText)
         return cell
     }
     
@@ -333,3 +313,9 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
 //        }
 //    }
 // [Int:[List]]
+
+// MARK: 통합모델 테스트 구역
+// 통신 테스트 1차 통과 -> currentCity 안되는중
+// 2차 통과 알고보니 날짜를 나눌 필요가 없었음. 그래서 날짜를 나누는 메서드에서 터진거였음
+// 3차 데이터 확인 통과
+// 4차 데이터 통과

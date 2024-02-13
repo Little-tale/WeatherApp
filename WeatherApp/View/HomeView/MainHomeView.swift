@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class MainHomeView: BaseView {
-    let currentView = CurrentWeatherHeaderView()
+    
     let tableView = UITableView()
     let tabview = CustomTabbarView()
     override func configureHierarchy() {

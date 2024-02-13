@@ -66,15 +66,28 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
         self.backgroundColor = .darkGray
     }
     
-    func settingImage(imageName: String) {
+//    func settingImage(imageName: String) {
+//        do{
+//            let url = try ImageAssistance().getImageUrl(imageName: imageName)
+//            weatherImageView.kf.setImage(with: url,placeholder: UIImage(systemName: "sun.max.trianglebadge.exclamationmark"))
+//        } catch(let error) {
+//            print(error)
+//        }
+//    }
+    func settingCellElements(list: List, dateAssi:DateAssistance, image: String?) {
+        tempLabel.text = TempAssistance.temp(temp: list.main.temp).get
+        timeLabel.text =  dateAssi.getOnlyTime(dtText: list.dtTxt)
+        
+        guard let image = image else {
+            return
+        }
         do{
-            let url = try ImageAssistance().getImageUrl(imageName: imageName)
+            let url = try ImageAssistance().getImageUrl(imageName: image)
             weatherImageView.kf.setImage(with: url,placeholder: UIImage(systemName: "sun.max.trianglebadge.exclamationmark"))
         } catch(let error) {
             print(error)
         }
     }
-   
     
     
 }
