@@ -112,9 +112,8 @@ final class WeatherMainViewController: UIViewController {
         super.viewDidAppear(animated)
         // homeView.tableView.layoutIfNeeded()
     }
-    
+    //MARK: 3일치 데이터를 반환해줍니다.
     private func threeItems() -> [List] {
-        
         // 키 0,1,2,3,4 .... 처럼 정렬
         let sortedKey = dateIndexDictioary.keys.sorted()
         // 앞에서 3개만 가져올겨

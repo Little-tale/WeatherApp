@@ -33,7 +33,7 @@ class CustomTabbarView: BaseView {
         mapButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(20)
             make.verticalEdges.equalToSuperview().inset(12)
-            make.size.equalTo(40)
+            make.width.equalTo(30)
         }
         listButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
