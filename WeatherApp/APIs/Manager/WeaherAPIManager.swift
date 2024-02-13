@@ -26,18 +26,20 @@ class URLSessionManager {
                 DispatchQueue.main.async {
                     
                     let result = self.DecodingTester(type: T.self, data: data, response: response, error: error)
-                    print("🤪🤪🤪🤪🤪🤪",result)
+                    //print("🤪🤪🤪🤪🤪🤪",result)
                     switch result {
                     case .success(let success):
                         completionHandler(.success(success))
-                        
-                    case .failure:
+                        print("성공~~~~~~~~~~~~~~~~")
+                    case .failure(let error):
+                        dump(error)
                         completionHandler(.failure(.componentsToUrlFail))
                     }
                 }
             }.resume()
         //MARK: 주의
-        case .failure:
+        case .failure(let error):
+            dump(error)
             DispatchQueue.main.async {
                 completionHandler(.failure(.noQuery))
             }
@@ -97,12 +99,13 @@ class URLSessionManager {
                 // print(decodingData)
                 return .success(decodingData)
             } catch(let error) {
-                // keyNotFound(CodingKeys(stringValue: "type", intValue: nil), Swift.DecodingError.Context(codingPath: [CodingKeys(stringValue: "sys", intValue: nil)], debugDescription: "No value associated with key CodingKeys(stringValue: \"type\", intValue: nil) (\"type\").", underlyingError: nil))
-                // print("🥸🥸🥸🥸🥸🥸",error)
+              
+                print("🥸🥸🥸🥸🥸🥸",error)
                 return .failure(.errorDecoding)
             }
             
         } catch(let error) {
+            print("🥸🥸🥸🥸🥸🥸",error)
             return .failure(.errorDecoding)
         }
         

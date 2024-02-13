@@ -161,7 +161,7 @@ struct List: Decodable, WeatherInfomation {
 
 //MARK:  통합 모델 재 재 구축
 struct AllInOneModel: Decodable, WeatherInfomation{
-    let message: String
+    let message: Int
     let city: City
     let list: [List]
     
@@ -200,7 +200,7 @@ struct AllInOneModel: Decodable, WeatherInfomation{
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.message = try container.decodeIfPresent(String.self, forKey: .message) ?? "no Message"
+        self.message = try container.decodeIfPresent(Int.self, forKey: .message) ?? 0
         
         self.city = try container.decodeIfPresent(City.self, forKey: .city) ?? City(id: 0, name: "", coord: Coord(lon: 0, lat: 0) , country: "", population: 0, timezone: 0, sunrise: 0, sunset: 0)
         

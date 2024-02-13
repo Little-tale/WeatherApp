@@ -14,6 +14,7 @@ final class WeatherMainViewController: UIViewController {
     let locationManager = CLLocationManager()
     let homeView = MainHomeView()
     var currentModel: HomeTableHeaderModel? = nil
+    var allInOneModel : AllInOneModel? = nil
     
     override func loadView() {
         self.view = homeView
@@ -105,6 +106,15 @@ final class WeatherMainViewController: UIViewController {
             self.logicUpdateSection(currentModel: current, forecastModel:  self.threeItems())
             self.homeView.tableView.reloadData()
         }
+        
+        // MARK: 통합모델 테스트 구역
+        // 통신 테스트 1차 통과 -> currentCity 안되는중
+        // 2차 통과 알고보니 날짜를 나눌 필요가 없었음. 그래서 날짜를 나누는 메서드에서 터진거였음
+        // 3차 데이터 확인 통과
+        // 4차 데이터 통과
+       
+        
+        
     }
     // MARK: 로직 개선 작업 3
     func logicUpdateSection(currentModel: HomeTableHeaderModel, forecastModel: [List]) {
@@ -228,11 +238,11 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let i = currentModel else {
+        guard let model = currentModel else {
             print("모델이 없음.")
             return UIView()
         }
-        homeView.currentView.settingView(city: i.cityName, temp: i.temperature, weatherInfo: i.description, maxTemp: i.maxTemp, minTemp: i.minTemp)
+        homeView.currentView.settingView(city: model.cityName, temp: model.temperature, weatherInfo: model.description, maxTemp: model.maxTemp, minTemp: model.minTemp)
         return homeView.currentView
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
