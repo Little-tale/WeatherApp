@@ -74,7 +74,7 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
 //    }
     func settingCellElements(list: List, dateAssi:DateAssistance, image: String?) {
         tempLabel.text = TempAssistance.temp(temp: list.main.temp).get
-        timeLabel.text =  dateAssi.getOnlyTime(dtText: list.dtTxt)
+        timeLabel.text =  dateAssi.getOnlyTimeToLocal(dt: list.dt)
         
         guard let image = image else {
             return

@@ -25,16 +25,28 @@ struct DateAssistance {
     // static let shared = DateAssistance()
     private let dateFormatter = DateFormatter()
     private var timezone = 32400
+    // MARK: 현지 시간으로 바꾸려면 dt를 이용한다는 외국인을 발견
+    // 급히 수정하려고한다.
+    private var timeIntervalDT = 0
     private var weatherApiDateFormat = "yyyy-MM-dd HH:mm:ss"
     var time:[Int] = []
+    
+    
+    
     // 2024-02-15 12:00:00
     init(timeZone: Int) {
         dateFormatter.dateFormat = weatherApiDateFormat
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone )
         self.timezone = timeZone
         // print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
     }
-    
+    // MARK: 구조체나 열겨형의 프로퍼티 수정이 필요할 경우 뮤테이팅
+    /// 하지만 이것은 인스턴스를 교체하며 해결한 시점에선 필요성은 없지만 새로운 개념이니 잘 기억하자
+    mutating func updateTimeZone(timeZone: Int){
+        self.timezone = timeZone
+        self.dateFormatter.locale = Locale(identifier: "ko_KR")
+        self.dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+    }
     
     // MARK: API 에서 받은 문자열을 날짜로 변환
     private func dateFromAPI(dtTxt: String) -> Date? {
@@ -46,11 +58,13 @@ struct DateAssistance {
     /// H시로 변환해드립니다. (dtTxt 필요)
     func getOnlyTime(dtText:String) -> String{
         // print(dtText)
-        
         guard let date = dateFormatter.date(from: dtText) else {
             print("날짜 변환에 실패: getOnlyTime")
             return ""
         }
+        
+        //dateFormatter.timeZone = TimeZone(secondsFromGMT: self.timezone)
+        
         print(timezone,"🍒🍒🍒🍒🍒🍒")
         dateFormatter.dateFormat = "H시"
         
@@ -59,6 +73,19 @@ struct DateAssistance {
         dateFormatter.dateFormat = self.weatherApiDateFormat
         print("🐸🐸🐸🐸🐸🐸",timeString)
         return timeString
+    }
+    
+    
+    // MARK: DT를 통해 현지 시간만 돌려드립니다.
+    func getOnlyTimeToLocal(dt: Int) -> String{
+        let dates = Date(timeIntervalSince1970: TimeInterval(dt))
+        
+        dateFormatter.dateFormat = "H시"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: self.timezone)
+        let timeString = dateFormatter.string(from: dates)
+        
+        return timeString
+        
     }
     
     // MARK: 시간 제거해서 날짜만 나오게 함
