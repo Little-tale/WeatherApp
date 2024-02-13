@@ -36,19 +36,25 @@ class CurrentWeatherHeaderView: BaseView {
         self.addSubview(middleLabel)
         self.backgroundColor = .clear
     }
+    // MARK: 레이아웃 에러발생 추적->
     override func configureLayout() {
         self.backgroundColor = .black
         tempLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(-20)
+            // 온도라벨은 Y축 중심에서 -20
+            make.centerY.equalToSuperview().inset(20)
+            // x 축 중심
             make.centerX.equalToSuperview()
+            // 넓이는 스크린 기준 2로 나눔
             make.width.equalTo(UIScreen.main.bounds.width / 2)
+            // 높이는 넓이기준 0.4 만큼
             make.height.equalTo(tempLabel.snp.width).multipliedBy(0.4)
         }
         cityNameLabel.snp.makeConstraints { make in
+            
             make.bottom.equalTo(tempLabel.snp.top).inset(-8)
             make.top.greaterThanOrEqualToSuperview().inset(8)
             make.horizontalEdges.equalToSuperview().inset(12)
-            make.height.equalTo(44)
+            // make.height.equalTo(44).priority(100)
             make.centerX.equalToSuperview()
         }
         weatherInfoLabel.snp.makeConstraints { make in

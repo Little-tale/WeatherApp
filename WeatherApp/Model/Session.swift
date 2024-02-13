@@ -25,12 +25,11 @@ enum homeSession: CaseIterable {
     }
 }
 
-//enum infoBoxSession: CaseIterable {
-//    case wind
-//    case cloud
-//    case giApp
-//    case supdo
-//    
-//    
-//    
-//}
+// MARK: 로직 개선 작업 1
+enum HomeTableViewSection {
+    case currentWeather(HomeTableHeaderModel)
+    case threeDatForecast([List])
+    case detailInfo(HomeTableHeaderModel)
+}
+
+

@@ -26,12 +26,19 @@ final class WeatherMainViewController: UIViewController {
     }
     
     var dateAssistance: DateAssistance = .init(timeZone: 32400)
-    var dateDictionry = dateDictionryForString() {
-        didSet{
-            dateIndexDictioary = dateAssistance.getSortedIndexList(DateDic: dateDictionry)
-        }
-    }
+    
+    // MARK: 해당 변수에 쓸모가 없음
+//    var dateDictionry = dateDictionryForString() {
+//        didSet{
+//            dateIndexDictioary = dateAssistance.getSortedIndexList(DateDic: dateDictionry)
+//        }
+//    }
+    // [Int:[List]]
     var dateIndexDictioary = dateNumDic()
+    // var dateIndexCecction: [Int:homeSession] = [:]
+    // MARK: 로직 개선 작업 2
+    var weatherViewSection : [HomeTableViewSection] = []
+    
     var threeModel = [List]()
     
     override func viewDidLoad() {
@@ -71,7 +78,11 @@ final class WeatherMainViewController: UIViewController {
                 let divideDate = self.dateAssistance.devideCalendar(dateList: success.list)
                 switch divideDate {
                 case .success(let success):
-                    self.dateDictionry = success
+                    // 날짜별로 나뉘어짐
+                    // MARK: 이 로직 수정하는게 좋을듯 여기서 바로 순서에 맞게
+                    self.dateIndexDictioary = self.dateAssistance.getSortedIndexList(DateDic: success)
+//                    self.dateDictionry = success
+                    // self.dateIndexCecction.
                 case .failure(let fail):
                     self.showAlert(error: fail)
                 }
@@ -83,9 +94,25 @@ final class WeatherMainViewController: UIViewController {
         
         group.notify(queue: .main) {
             print("🍌🍌🍌🍌🍌🍌🍌🍌")
+            guard let current = self.currentModel else {
+                return
+            }
+            // MARK: 로직개선 4 ->
+            /// 각 색션별로 모델을 구분위함
+            self.logicUpdateSection(currentModel: current, forecastModel:  self.threeItems())
             self.homeView.tableView.reloadData()
         }
     }
+    // MARK: 로직 개선 작업 3
+    func logicUpdateSection(currentModel: HomeTableHeaderModel, forecastModel: [List]) {
+        self.weatherViewSection = [
+            .currentWeather(currentModel),
+            .threeDatForecast(forecastModel),
+            .detailInfo(currentModel)
+        ]
+    }
+    
+    
     
     // MARK: 다음뷰로 가서 값을 가져옵니다.
     @objc
@@ -208,13 +235,15 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // 헤더뷰 동적계산 포기 없어졌다 생기는 과정에서 자동적일떄 24 여야 한다와 내부 적으론 더 커야 한다가 충돌됨
+        return 240
+    }
     
 }
 // MARK: 컬렉션뷰 데이타
 extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return threeModel.count
     }
     
@@ -277,14 +306,9 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
         
         cell.minTextlabel.text = "최소 : " + minText
         
-        
         return cell
     }
     
-    
-}
-
-extension WeatherMainViewController {
     
 }
 
