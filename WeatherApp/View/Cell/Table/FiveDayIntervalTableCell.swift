@@ -60,6 +60,8 @@ extension FiveDayIntervalTableCell: UITableViewDelegate, UITableViewDataSource {
         return fiveDelegate?.FivetableView(for: self, tableView: tableView, cellForRowAt: indexPath) ?? UITableViewCell()
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }

@@ -31,6 +31,7 @@ class FiveInnerTableViewCell: BaseTableCell {
             make.top.equalToSuperview().offset(8)
             make.leading.equalToSuperview().offset(16)
 //            make.trailing.bottom.lessThanOrEqualTo(weatherImageView.snp.leading).offset(-8)
+            make.width.equalTo(60)
             make.bottom.equalToSuperview().offset(-8)
         }
 
@@ -58,7 +59,7 @@ class FiveInnerTableViewCell: BaseTableCell {
             
             make.centerY.equalToSuperview()
             
-            make.trailing.lessThanOrEqualToSuperview().offset(-16)
+            make.trailing.greaterThanOrEqualToSuperview().offset(-16)
         }
     }
     

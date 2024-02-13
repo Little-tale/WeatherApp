@@ -25,6 +25,8 @@ final class WeatherMainViewController: UIViewController {
     var cityId = 1833788 {
         didSet{
             requestData()
+            // MARK: 값이 변경되었을때 스크롤을 위로 올려줍니다.
+            homeView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }
    
@@ -122,11 +124,15 @@ final class WeatherMainViewController: UIViewController {
     @objc
     func goListView(){
         let vc = CityListViewController()
+        let nvc = UINavigationController(rootViewController: vc)
         vc.getCityId = {
             cityId in
             self.cityId = cityId
         }
-        present(vc, animated: true)
+        vc.navigationTitle = "도시검색"
+        nvc.modalPresentationStyle = .fullScreen
+        
+        present(nvc, animated: true)
     }
     
     
@@ -173,9 +179,11 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
 
         let section = homeSession.allCases[indexPath.row]
         // let totalItems = threeItems()
-    
         // threeModel = totalItems
         // print("asdasdasdasd")
+        
+       
+        
         switch section {
         case .threeTimeInterval:
             // print(secction)
@@ -187,6 +195,8 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.collectionView.dataSource = self
             cell.topView.label.text = section.title
             cell.collectionView.reloadData()
+            // MARK: 리로드 시 스크롤 처음으로 돌려줍니다.
+            cell.collectionView.scrollToItem(at: IndexPath(row: -1, section: 0), at: .left, animated: true)
 
             return cell
             
@@ -243,6 +253,9 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
         return 240
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }
 // MARK: 컬렉션뷰 데이타
@@ -262,11 +275,11 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
         cell.settingCellElements(list: modelData, dateAssi: dateAssistance, image: modelData.weather.first?.icon)
     
         return cell
-        
     }
 }
-
+// MARK: 딜리게이트 패턴을 이용한 테이블뷰 데이타 소스 & 딜리게이트
 extension WeatherMainViewController: FiveDayIntervalProtocol {
+
     func FivetableView(for FiveDayIntervalTableCell: UITableViewCell, tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("🥝🥝🥝🥝🥝🥝",dateIndexDictioary.count)
         return dateIndexDictioary.count

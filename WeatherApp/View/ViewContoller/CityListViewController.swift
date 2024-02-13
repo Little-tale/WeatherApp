@@ -13,6 +13,7 @@ final class CityListViewController : BaseViewController {
     var citiInfo: cityInfoModels = []
     var getCityId: ((Int) -> Void )?
     var filterModel: cityInfoModels?
+    var navigationTitle: String?
     
     override func loadView() {
         self.view = homeview
@@ -20,7 +21,7 @@ final class CityListViewController : BaseViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
     }
     
     override func delegateDataSource() {
@@ -31,6 +32,7 @@ final class CityListViewController : BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         jsonDataLoad()
+        self.navigationItem.title = navigationTitle
     }
     ///https://jiseobkim.github.io/swift/network/2021/05/16/swift-JSON-%ED%8C%8C%EC%9D%BC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.html
     private func jsonDataLoad(){
@@ -111,7 +113,7 @@ extension CityListViewController: UISearchBarDelegate {
             return
         }
         guard searchText != "" else {
-            homeview.endEditing(true)
+            filterModel = nil
             print("no you have text baby")
             return
         }
@@ -120,5 +122,17 @@ extension CityListViewController: UISearchBarDelegate {
         self.homeview.tableView.reloadData()
         homeview.endEditing(true)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard searchText != "" else {
+            filterModel = nil
+            self.homeview.tableView.reloadData()
+            return
+        }
+        let result = SearchAssistance().findCity(for: searchText, cityModel: citiInfo)
+        filterModel = result
+        self.homeview.tableView.reloadData()
+    }
+    
 }
 
