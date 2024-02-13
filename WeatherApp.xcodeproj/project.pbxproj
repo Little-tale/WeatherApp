@@ -202,6 +202,7 @@
 		7BB0A7252B76618900517D49 /* Assistance */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0A7372B77670800517D49 /* TempAssistance.swift */,
 				7BB0A7392B777E6900517D49 /* DateAssistance.swift */,
 				7BB0A7512B78F4C900517D49 /*  TemperatureAssistance.swift */,
 				7BB0A76C2B79B8D400517D49 /* ImageAssistance.swift */,
@@ -223,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				7BB0A72D2B76FF6B00517D49 /* WeaherAPIManager.swift */,
-				7BB0A7372B77670800517D49 /* TempAssistance.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";

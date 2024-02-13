@@ -24,21 +24,20 @@ enum dateError: Error {
 struct DateAssistance {
     // static let shared = DateAssistance()
     private let dateFormatter = DateFormatter()
-    private var timeZone = 32400
+    private var timezone = 32400
     private var weatherApiDateFormat = "yyyy-MM-dd HH:mm:ss"
     var time:[Int] = []
     // 2024-02-15 12:00:00
     init(timeZone: Int) {
         dateFormatter.dateFormat = weatherApiDateFormat
         dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
-        self.timeZone = timeZone
-        print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
-        
+        self.timezone = timeZone
+        // print("🙀🙀🙀🙀🙀🙀🙀",timeZone)
     }
     
     
     // MARK: API 에서 받은 문자열을 날짜로 변환
-    func dateFromAPI(dtTxt: String) -> Date? {
+    private func dateFromAPI(dtTxt: String) -> Date? {
         // print(dtTxt)
         return dateFormatter.date(from: dtTxt)
     }
@@ -47,18 +46,17 @@ struct DateAssistance {
     /// H시로 변환해드립니다. (dtTxt 필요)
     func getOnlyTime(dtText:String) -> String{
         // print(dtText)
+        
         guard let date = dateFormatter.date(from: dtText) else {
             print("날짜 변환에 실패: getOnlyTime")
             return ""
         }
-        print(date, dtText)
-        // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        print(timeZone,"🍒🍒🍒🍒🍒🍒")
+        print(timezone,"🍒🍒🍒🍒🍒🍒")
         dateFormatter.dateFormat = "H시"
-        // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
         let timeString = dateFormatter.string(from: date)
         // 재사용 위해 원상 복구
-        dateFormatter.dateFormat = weatherApiDateFormat
+        dateFormatter.dateFormat = self.weatherApiDateFormat
         print("🐸🐸🐸🐸🐸🐸",timeString)
         return timeString
     }
@@ -67,14 +65,7 @@ struct DateAssistance {
     // -> 캘린더로 하니 연도 넣어주어야 해서 생각해보니 넣어야 겠네
     private func getOnlyDate(date: Date) -> String? {
         var calendar = Calendar.current
-        // 이유는 모르겠으나 0으로 주니 00:00:00 으로 잘 변환된다
-//        if let timeZOne = TimeZone(secondsFromGMT: 0) {
-//            calendar.timeZone = timeZOne
-//             calendar.locale = .init(identifier: "ko_KR")
-//        }
-        // 2024-02-14 18:00:00
-        // 켈린더Date를 생성하는데 DateComponents 객체를 받아 Date를 추출합니다.
-        // DateComponents는 각 년,월,일 만 추출합니다. -> 00:00:00 이 기댓값
+
         
         let afterCalendar = calendar.date(from: calendar.dateComponents([.year,.month,.day], from: date))
         
@@ -161,3 +152,11 @@ struct DateAssistance {
  
 
 
+// 이유는 모르겠으나 0으로 주니 00:00:00 으로 잘 변환된다
+//        if let timeZOne = TimeZone(secondsFromGMT: 0) {
+//            calendar.timeZone = timeZOne
+//             calendar.locale = .init(identifier: "ko_KR")
+//        }
+// 2024-02-14 18:00:00
+// 켈린더Date를 생성하는데 DateComponents 객체를 받아 Date를 추출합니다.
+// DateComponents는 각 년,월,일 만 추출합니다. -> 00:00:00 이 기댓값
