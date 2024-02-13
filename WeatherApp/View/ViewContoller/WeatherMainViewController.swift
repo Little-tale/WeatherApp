@@ -170,12 +170,12 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let secction = homeSession.allCases[indexPath.row]
+        let section = homeSession.allCases[indexPath.row]
         // let totalItems = threeItems()
     
         // threeModel = totalItems
         // print("asdasdasdasd")
-        switch secction {
+        switch section {
         case .threeTimeInterval:
             // print(secction)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainHomeTableViewCell.reusableIdentifier, for: indexPath) as? MainHomeTableViewCell else {
@@ -184,7 +184,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             }
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
-            cell.topView.label.text = secction.title
+            cell.topView.label.text = section.title
             cell.backgroundColor = .clear
             cell.collectionView.reloadData()
 
@@ -196,7 +196,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.fiveDelegate = self
-            cell.label.label.text = secction.title
+            cell.label.label.text = section.title
             cell.tableView.reloadData()
             return cell
             
@@ -205,7 +205,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 print("셀 변환실패 LocationTableViewCell")
                 return UITableViewCell()
             }
-            cell.header.label.text = secction.title
+            cell.header.label.text = section.title
             cell.header.imageView.image = UIImage(systemName: "location.fill")
             guard let current = currentModel?.coord else {
                 print("데이터를 불러오지 못했습니다 currentModel -> coord")

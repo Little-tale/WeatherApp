@@ -31,13 +31,13 @@ class URLSessionManager {
                     case .success(let success):
                         completionHandler(.success(success))
                         
-                    case .failure(let failure):
+                    case .failure:
                         completionHandler(.failure(.componentsToUrlFail))
                     }
                 }
             }.resume()
         //MARK: 주의
-        case .failure(let error):
+        case .failure:
             DispatchQueue.main.async {
                 completionHandler(.failure(.noQuery))
             }
