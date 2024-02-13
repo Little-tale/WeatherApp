@@ -19,15 +19,18 @@ class URLSessionManager {
     
     func fetch<T:Decodable>(type: T.Type, api: UrlSession, completionHandler: @escaping (apiModel<T>) -> Void ){
         let urlRequestCase = makeURLComponents(api: api)
-        
+        // print(urlRequestCase)
         switch urlRequestCase{
         case .success(let urlRequest):
             URLSession.shared.dataTask(with:urlRequest) { data, response, error in
                 DispatchQueue.main.async {
+                    
                     let result = self.DecodingTester(type: T.self, data: data, response: response, error: error)
+                    print("🤪🤪🤪🤪🤪🤪",result)
                     switch result {
                     case .success(let success):
                         completionHandler(.success(success))
+                        
                     case .failure(let failure):
                         completionHandler(.failure(.componentsToUrlFail))
                     }
@@ -94,6 +97,8 @@ class URLSessionManager {
                 // print(decodingData)
                 return .success(decodingData)
             } catch(let error) {
+                // keyNotFound(CodingKeys(stringValue: "type", intValue: nil), Swift.DecodingError.Context(codingPath: [CodingKeys(stringValue: "sys", intValue: nil)], debugDescription: "No value associated with key CodingKeys(stringValue: \"type\", intValue: nil) (\"type\").", underlyingError: nil))
+                // print("🥸🥸🥸🥸🥸🥸",error)
                 return .failure(.errorDecoding)
             }
             

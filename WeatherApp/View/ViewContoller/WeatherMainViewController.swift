@@ -67,6 +67,7 @@ final class WeatherMainViewController: UIViewController {
                 self.dateAssistance = DateAssistance(timeZone: model.timezone)
                 
             case .failure(let errors):
+                print("🧐🧐🧐🧐🧐",errors)
                 self.showAlert(error: errors)
             }
             group.leave()
@@ -241,6 +242,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
         // 헤더뷰 동적계산 포기 없어졌다 생기는 과정에서 자동적일떄 24 여야 한다와 내부 적으론 더 커야 한다가 충돌됨
         return 240
     }
+    
     
 }
 // MARK: 컬렉션뷰 데이타

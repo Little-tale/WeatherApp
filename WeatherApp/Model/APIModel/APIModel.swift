@@ -180,7 +180,7 @@ struct Main: Decodable {
 
 // MARK: - Sys
 struct Sys: Decodable {
-    let type, id: Int
+    let type, id: Int?
     let country: String
     let sunrise, sunset: Int
 }

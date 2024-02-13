@@ -61,4 +61,5 @@ extension FiveDayIntervalTableCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    
 }
