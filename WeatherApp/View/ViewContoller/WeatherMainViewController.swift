@@ -36,10 +36,12 @@ final class WeatherMainViewController: UIViewController {
     // [Int:[List]]
     var dateIndexDictioary = dateNumDic()
     // var dateIndexCecction: [Int:homeSession] = [:]
+    
     // MARK: 로직 개선 작업 2
     var weatherViewSection : [HomeTableViewSection] = []
     
-    var threeModel = [List]()
+    // MARK: 이것도 왜 이렇게 했을까 궁금
+    // var threeModel = [List]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,14 +170,13 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let secction = homeSession.allCases[indexPath.row]
-        let totalItems = threeItems()
+        // let totalItems = threeItems()
     
-        threeModel = totalItems
-        
+        // threeModel = totalItems
         // print("asdasdasdasd")
         switch secction {
         case .threeTimeInterval:
-            print(secction)
+            // print(secction)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainHomeTableViewCell.reusableIdentifier, for: indexPath) as? MainHomeTableViewCell else {
                 print("셀 변환 실패")
                 return UITableViewCell()
@@ -244,7 +245,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
 // MARK: 컬렉션뷰 데이타
 extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return threeModel.count
+        return threeItems().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -252,7 +253,8 @@ extension WeatherMainViewController: UICollectionViewDelegate, UICollectionViewD
             print("컬렉션뷰 셀 에러")
             return UICollectionViewCell()
         }
-        let modelData = threeModel[indexPath.row]
+        
+        let modelData = threeItems()[indexPath.row]
         cell.tempLabel.text = TempAssistance.temp(temp: modelData.main.temp).get
        
         cell.timeLabel.text =  dateAssistance.getOnlyTime(dtText: modelData.dtTxt)
