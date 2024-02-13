@@ -140,6 +140,6 @@ final class CurrentWeatherHeaderView: BaseView {
     }
 }
 
-#Preview{
-    WeatherMainViewController()
-}
+//#Preview{
+//    WeatherMainViewController()
+//}

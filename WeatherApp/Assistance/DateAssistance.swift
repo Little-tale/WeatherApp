@@ -62,9 +62,6 @@ struct DateAssistance {
             print("날짜 변환에 실패: getOnlyTime")
             return ""
         }
-        
-        //dateFormatter.timeZone = TimeZone(secondsFromGMT: self.timezone)
-        
         print(timezone,"🍒🍒🍒🍒🍒🍒")
         dateFormatter.dateFormat = "H시"
         

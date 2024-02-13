@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B923AB02B7BCE24000D1A98 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7B923AAF2B7BCE24000D1A98 /* SnapKit */; };
 		7BB0A70C2B762B7500517D49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70B2B762B7500517D49 /* AppDelegate.swift */; };
 		7BB0A70E2B762B7500517D49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70D2B762B7500517D49 /* SceneDelegate.swift */; };
 		7BB0A7102B762B7500517D49 /* WeatherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A70F2B762B7500517D49 /* WeatherMainViewController.swift */; };
@@ -24,8 +25,6 @@
 		7BB0A73F2B78BA1200517D49 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A73E2B78BA1200517D49 /* MainHomeView.swift */; };
 		7BB0A7432B78BA5500517D49 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7422B78BA5500517D49 /* BaseView.swift */; };
 		7BB0A7472B78BB3C00517D49 /* CurrentWeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7462B78BB3C00517D49 /* CurrentWeatherHeaderView.swift */; };
-		7BB0A74A2B78BD6E00517D49 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A7492B78BD6E00517D49 /* SnapKit */; };
-		7BB0A74C2B78BD6E00517D49 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */; };
 		7BB0A74E2B78CABD00517D49 /* TestViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A74D2B78CABD00517D49 /* TestViewContoller.swift */; };
 		7BB0A7502B78D80600517D49 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A74F2B78D80600517D49 /* Extention.swift */; };
 		7BB0A7522B78F4C900517D49 /*  TemperatureAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0A7512B78F4C900517D49 /*  TemperatureAssistance.swift */; };
@@ -111,8 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BB0A7692B790E0A00517D49 /* Kingfisher in Frameworks */,
-				7BB0A74A2B78BD6E00517D49 /* SnapKit in Frameworks */,
-				7BB0A74C2B78BD6E00517D49 /* SnapKit-Dynamic in Frameworks */,
+				7B923AB02B7BCE24000D1A98 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,9 +394,8 @@
 			);
 			name = WeatherApp;
 			packageProductDependencies = (
-				7BB0A7492B78BD6E00517D49 /* SnapKit */,
-				7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */,
 				7BB0A7682B790E0A00517D49 /* Kingfisher */,
+				7B923AAF2B7BCE24000D1A98 /* SnapKit */,
 			);
 			productName = WeatherApp;
 			productReference = 7BB0A7082B762B7500517D49 /* WeatherApp.app */;
@@ -429,8 +426,8 @@
 			);
 			mainGroup = 7BB0A6FF2B762B7500517D49;
 			packageReferences = (
-				7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7BB0A7672B790E0A00517D49 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7B923AAE2B7BCE24000D1A98 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7BB0A7092B762B7500517D49 /* Products */;
 			projectDirPath = "";
@@ -650,6 +647,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -680,6 +678,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -720,7 +719,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		7B923AAE2B7BCE24000D1A98 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -739,15 +738,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7BB0A7492B78BD6E00517D49 /* SnapKit */ = {
+		7B923AAF2B7BCE24000D1A98 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 7B923AAE2B7BCE24000D1A98 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		7BB0A74B2B78BD6E00517D49 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7BB0A7482B78BD6E00517D49 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		7BB0A7682B790E0A00517D49 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
