@@ -94,9 +94,9 @@ final class WeatherMainViewController: UIViewController {
         
         group.notify(queue: .main) {
             print("🍌🍌🍌🍌🍌🍌🍌🍌")
-            guard let current = self.currentModel else {
-                return
-            }
+//            guard let current = self.currentModel else {
+//                return
+//            }
             // MARK: 로직개선 4 -> 통합 모델로 변경후 재시도
             /// 각 색션별로 모델을 구분위함
             // self.logicUpdateSection(currentModel: current, forecastModel:  self.threeItems())
@@ -186,7 +186,6 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.topView.label.text = section.title
-            cell.backgroundColor = .clear
             cell.collectionView.reloadData()
 
             return cell
@@ -197,7 +196,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.fiveDelegate = self
-            cell.label.label.text = section.title
+            cell.labelView.label.text = section.title
             cell.tableView.reloadData()
             return cell
             
@@ -207,7 +206,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.header.label.text = section.title
-            cell.header.imageView.image = UIImage(systemName: "location.fill")
+            
             guard let current = currentModel?.coord else {
                 print("데이터를 불러오지 못했습니다 currentModel -> coord")
                 return cell
@@ -219,9 +218,10 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             }
             
             cell.setModelData(model: currentData)
+            
             return cell
         }
-        // return cell
+       
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

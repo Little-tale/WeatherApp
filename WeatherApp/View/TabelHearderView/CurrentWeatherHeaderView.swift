@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CurrentWeatherHeaderView: BaseView {
+final class CurrentWeatherHeaderView: BaseView {
     let cityNameLabel = UILabel()
     let tempLabel = UILabel()
     let weatherInfoLabel = UILabel()

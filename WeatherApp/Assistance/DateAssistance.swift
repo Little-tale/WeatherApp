@@ -55,7 +55,7 @@ struct DateAssistance {
         // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         print(timeZone,"🍒🍒🍒🍒🍒🍒")
         dateFormatter.dateFormat = "H시"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+        // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         let timeString = dateFormatter.string(from: date)
         // 재사용 위해 원상 복구
         dateFormatter.dateFormat = weatherApiDateFormat

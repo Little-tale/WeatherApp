@@ -15,26 +15,26 @@ protocol FiveDayIntervalProtocol: AnyObject {
 
 
 class FiveDayIntervalTableCell: BaseTableCell {
-    let label = IntervalLabelView()
+    let labelView = IntervalLabelView()
     let tableView = UITableView()
     
     weak var fiveDelegate: FiveDayIntervalProtocol?
     
     override func configureHierarchy() {
-        contentView.addSubview(label)
+        contentView.addSubview(labelView)
         contentView.addSubview(tableView)
     }
     override func configureLayout() {
-        label.snp.makeConstraints { make in
+        labelView.snp.makeConstraints { make in
             make.horizontalEdges.top.equalToSuperview()
             make.height.equalTo(60)
         }
         tableView.snp.makeConstraints { make in
             make.height.equalTo(240).priority(600)
             make.horizontalEdges.bottom.equalToSuperview()
-            make.top.equalTo(label.snp.bottom).inset(8)
+            make.top.equalTo(labelView.snp.bottom).inset(8)
         }
-        label.backgroundColor = .clear
+        labelView.backgroundColor = .clear
         self.backgroundColor = UIColor(white: 0, alpha: 1)
         contentView.backgroundColor = UIColor(white: 0, alpha: 1)
     }

@@ -30,7 +30,8 @@ class FiveInnerTableViewCell: BaseTableCell {
         dateWeekLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.lessThanOrEqualTo(weatherImageView.snp.leading).offset(-8)
+//            make.trailing.bottom.lessThanOrEqualTo(weatherImageView.snp.leading).offset(-8)
+            make.bottom.equalToSuperview().offset(-8)
         }
 
         weatherImageView.snp.makeConstraints { make in
@@ -42,13 +43,21 @@ class FiveInnerTableViewCell: BaseTableCell {
 
         minTextlabel.snp.makeConstraints { make in
             make.leading.equalTo(weatherImageView.snp.trailing).offset(8)
-            make.bottom.equalTo(weatherImageView.snp.centerY).offset(-2)
+            
+            // make.bottom.equalTo(weatherImageView.snp.centerY).offset(-2)
+            
+            make.centerY.equalToSuperview()
+
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
 
         maxTextLabel.snp.makeConstraints { make in
-            make.leading.equalTo(minTextlabel.snp.leading)
-            make.top.equalTo(weatherImageView.snp.centerY).offset(2)
+            make.leading.equalTo(minTextlabel.snp.trailing).offset(8)
+            
+            // make.top.equalTo(weatherImageView.snp.centerY).offset(2)
+            
+            make.centerY.equalToSuperview()
+            
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
     }
@@ -58,8 +67,9 @@ class FiveInnerTableViewCell: BaseTableCell {
             label.textColor = .white
             label.backgroundColor = .brown
         }
-        contentView.backgroundColor = UIColor(white: 0, alpha: 1)
         
+        contentView.backgroundColor = UIColor(white: 0, alpha: 1)
+        weatherImageView.contentMode = .scaleAspectFill
     }
     
     override func settingImage(imageName: String) {

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CityListHomeView: BaseView {
+final class CityListHomeView: BaseView {
     let titleLabel: UILabel = {
        let view = UILabel()
         view.text = " 도시"

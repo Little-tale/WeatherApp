@@ -35,6 +35,7 @@ class MainHomeTableViewCell:BaseTableCell {
         collectionView.register(TimesWeatherCollecionViewCell.self, forCellWithReuseIdentifier: TimesWeatherCollecionViewCell.reusableIdentifier)
         // 알파값 터치 위함
         collectionView.backgroundColor = UIColor(white: 0, alpha: 1)
+        self.backgroundColor = UIColor(white: 0, alpha: 1)
     }
     
     var configureCellLayout : UICollectionViewFlowLayout {

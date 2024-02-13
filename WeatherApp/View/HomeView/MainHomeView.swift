@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MainHomeView: BaseView {
+final class MainHomeView: BaseView {
     
     let tableView = UITableView()
     let tabview = CustomTabbarView()

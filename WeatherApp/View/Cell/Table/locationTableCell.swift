@@ -138,7 +138,8 @@ class LocationTableViewCell: BaseTableCell {
     override func designView() {
         self.backgroundColor = UIColor(white: 0, alpha: 1)
         contentView.backgroundColor = UIColor(white: 0, alpha: 1)
-        
+        self.header.imageView.image =  UIImage(systemName: "location.fill")
+        header.imageView.tintColor = .white
         // mapView.mapType = .satellite
     }
     
