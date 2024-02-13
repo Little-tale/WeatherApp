@@ -10,11 +10,12 @@ import CoreLocation
 
 typealias dateNumDic = [Int:[List]]
 
+// 이제 고민할건 다른 셀들도 이 뷰에서 사용할 모델로 묶어 보자. 
+
 final class WeatherMainViewController: UIViewController {
     let locationManager = CLLocationManager()
     let homeView = MainHomeView()
-    var currentModel: HomeTableHeaderModel? = nil
-    var allInOneModel : AllInOneModel? = nil
+    var currentModel: WeatherHomeViewModel? = nil
     
     override func loadView() {
         self.view = homeView
@@ -59,11 +60,11 @@ final class WeatherMainViewController: UIViewController {
         let group = DispatchGroup()
         
         group.enter()
-        URLSessionManager.shared.fetch(type: WeatherAPIcurrentModel.self, api: WeatherApi.currentCity(id: cityId)) { result in
+        URLSessionManager.shared.fetch(type: AllInOneModel.self, api: WeatherApi.currentCity(id: cityId)) { result in
             switch result{
             case .success(let model):
                 // print(model)
-                self.currentModel = HomeTableHeaderModel(model: model)
+                self.currentModel = WeatherHomeViewModel(model: model)
               
                 self.dateAssistance = DateAssistance(timeZone: model.timezone)
                 
@@ -101,9 +102,9 @@ final class WeatherMainViewController: UIViewController {
             guard let current = self.currentModel else {
                 return
             }
-            // MARK: 로직개선 4 ->
+            // MARK: 로직개선 4 -> 통합 모델로 변경후 재시도
             /// 각 색션별로 모델을 구분위함
-            self.logicUpdateSection(currentModel: current, forecastModel:  self.threeItems())
+            // self.logicUpdateSection(currentModel: current, forecastModel:  self.threeItems())
             self.homeView.tableView.reloadData()
         }
         
@@ -117,13 +118,13 @@ final class WeatherMainViewController: UIViewController {
         
     }
     // MARK: 로직 개선 작업 3
-    func logicUpdateSection(currentModel: HomeTableHeaderModel, forecastModel: [List]) {
-        self.weatherViewSection = [
-            .currentWeather(currentModel),
-            .threeDatForecast(forecastModel),
-            .detailInfo(currentModel)
-        ]
-    }
+//    func logicUpdateSection(currentModel: WeatherHomeViewModel, forecastModel: [List]) {
+//        self.weatherViewSection = [
+//            .currentWeather(currentModel),
+//            .threeDatForecast(forecastModel),
+//            .detailInfo(currentModel)
+//        ]
+//    }
     
     
     

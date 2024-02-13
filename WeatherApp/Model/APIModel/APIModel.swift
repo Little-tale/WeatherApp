@@ -167,7 +167,7 @@ struct AllInOneModel: Decodable, WeatherInfomation{
     
     let cityName: String // name 으로 수정해야함
     let dt: Int // 예측된 시간
-    let timeZone: Int
+    let timezone: Int
     let id: Int
     let sys: Sys
     let clouds: Clouds
@@ -185,7 +185,7 @@ struct AllInOneModel: Decodable, WeatherInfomation{
         case list
         case cityName = "name"
         case dt
-        case timeZone
+        case timezone
         case id
         case sys
         case clouds
@@ -208,7 +208,7 @@ struct AllInOneModel: Decodable, WeatherInfomation{
         
         self.cityName = try container.decodeIfPresent(String.self, forKey: .cityName) ?? ""
         self.dt = try container.decodeIfPresent(Int.self, forKey: .dt) ?? 0
-        self.timeZone = try container.decodeIfPresent(Int.self, forKey: .timeZone) ?? 32400
+        self.timezone = try container.decodeIfPresent(Int.self, forKey: .timezone) ?? 32400
         self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? 0
         
         self.sys = try container.decodeIfPresent(Sys.self, forKey: .sys) ?? Sys(type: 0, id: 0, country: "", sunrise: 0, sunset: 0)

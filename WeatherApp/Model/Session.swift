@@ -27,9 +27,9 @@ enum homeSession: CaseIterable {
 
 // MARK: 로직 개선 작업 1
 enum HomeTableViewSection {
-    case currentWeather(HomeTableHeaderModel)
-    case threeDatForecast([List])
-    case detailInfo(HomeTableHeaderModel)
+    case currentWeather(WeatherHomeViewModel)
+    case threeDatForecast(WeatherHomeViewModel)
+    case detailInfo(WeatherHomeViewModel)
 }
 
 
