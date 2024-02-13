@@ -220,6 +220,7 @@ extension WeatherMainViewController : UITableViewDelegate, UITableViewDataSource
             cell.updateInfoBoxView(cell.giappBoxView, title: "기압", info: currentData.giap, detail: nil)
             cell.updateInfoBoxView(cell.supdoBoxView, title: "습도", info: currentData.supdo, detail: nil)
             //cell.settingInfoBoxView(title: <#T##String#>, info: <#T##String#>, detail: <#T##String?#>)
+            
             return cell
         }
         // return cell
