@@ -15,6 +15,7 @@ typealias dateNumDic = [Int:[List]]
 final class WeatherMainViewController: UIViewController {
     let locationManager = CLLocationManager()
     let homeView = MainHomeView()
+    
     var currentModel: WeatherHomeViewModel? = nil
     
     override func loadView() {
@@ -26,16 +27,10 @@ final class WeatherMainViewController: UIViewController {
             requestData()
         }
     }
-    
+   
     var dateAssistance: DateAssistance = .init(timeZone: 32400)
     
-    // MARK: 해당 변수에 쓸모가 없음
-//    var dateDictionry = dateDictionryForString() {
-//        didSet{
-//            dateIndexDictioary = dateAssistance.getSortedIndexList(DateDic: dateDictionry)
-//        }
-//    }
-    // [Int:[List]]
+    // Int:[List]
     var dateIndexDictioary = dateNumDic()
     // var dateIndexCecction: [Int:homeSession] = [:]
     
@@ -331,3 +326,10 @@ extension WeatherMainViewController: FiveDayIntervalProtocol {
 //#Preview{
 //    WeatherMainViewController()
 //}
+// MARK: 해당 변수에 쓸모가 없음
+//    var dateDictionry = dateDictionryForString() {
+//        didSet{
+//            dateIndexDictioary = dateAssistance.getSortedIndexList(DateDic: dateDictionry)
+//        }
+//    }
+// [Int:[List]]
