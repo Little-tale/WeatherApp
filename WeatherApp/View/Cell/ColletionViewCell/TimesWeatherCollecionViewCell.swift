@@ -53,10 +53,8 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
         timeLabel.textAlignment = .center
         tempLabel.textAlignment = .center
         weatherImageView.backgroundColor = .clear
-        
-        weatherImageView.image = UIImage(systemName: "star")
         stackView.backgroundColor = .clear
-        
+        weatherImageView.tintColor = .darkGray
         labelList.forEach { label in
             label.textColor = .white
             label.backgroundColor = .clear
@@ -83,7 +81,10 @@ class TimesWeatherCollecionViewCell: BaseCollectionViewCell{
         }
         do{
             let url = try ImageAssistance().getImageUrl(imageName: image)
-            weatherImageView.kf.setImage(with: url,placeholder: UIImage(systemName: "sun.max.trianglebadge.exclamationmark"))
+            weatherImageView.kf.setImage(with: url,placeholder: UIImage(systemName: "sun.max.trianglebadge.exclamationmark"),options:[
+                .transition(.fade(0.5)),
+                .forceTransition
+              ])
         } catch(let error) {
             print(error)
         }

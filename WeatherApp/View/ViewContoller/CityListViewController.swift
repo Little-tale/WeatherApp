@@ -21,9 +21,19 @@ final class CityListViewController : BaseViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingNavigation()
+        
         
     }
     
+    func settingNavigation() {
+        let leftItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonAction))
+        navigationItem.leftBarButtonItem = leftItem
+    }
+    @objc
+    func backButtonAction(){
+        dismiss(animated: true)
+    }
     override func delegateDataSource() {
         homeview.tableView.dataSource = self
         homeview.tableView.delegate = self
@@ -35,7 +45,7 @@ final class CityListViewController : BaseViewController {
         self.navigationItem.title = navigationTitle
     }
     ///https://jiseobkim.github.io/swift/network/2021/05/16/swift-JSON-%ED%8C%8C%EC%9D%BC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.html
-    private func jsonDataLoad(){
+    fileprivate func jsonDataLoad(){
         let fileName: String = "CityList1"
         let extensionType = "json"
         
