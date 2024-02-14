@@ -10,7 +10,7 @@
 // 2024-02-10 06:00:00 형식
 // API는 Timezone: 32400 이라는데
 import Foundation
-// https://velog.io/@loganberry/Swift-%EB%82%A0%EC%A7%9C%EC%99%80-%EC%8B%9C%EA%B0%84-%EB%8B%A4%EB%A3%A8%EA%B8%B0-2-feat.-DateFormatter-DateComponents
+
 typealias dataDictionry = [Date: [List]]
 typealias dateDictionryForString = [String:[List]]
 typealias resultDic = Result<dataDictionry, dateError>
@@ -44,7 +44,7 @@ struct DateAssistance {
     /// 하지만 이것은 인스턴스를 교체하며 해결한 시점에선 필요성은 없지만 새로운 개념이니 잘 기억하자
     mutating func updateTimeZone(timeZone: Int){
         self.timezone = timeZone
-        self.dateFormatter.locale = Locale(identifier: "ko_KR")
+        // self.dateFormatter.locale = Locale(identifier: "ko_KR")
         self.dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
     }
     
@@ -184,3 +184,5 @@ struct DateAssistance {
 // 2024-02-14 18:00:00
 // 켈린더Date를 생성하는데 DateComponents 객체를 받아 Date를 추출합니다.
 // DateComponents는 각 년,월,일 만 추출합니다. -> 00:00:00 이 기댓값
+
+//replacingOccurrences // components // enumerated
